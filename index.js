@@ -12,6 +12,11 @@ var http = require('http');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/FYLSA');
 var Schema = mongoose.Schema;
+var flash = require('connect-flash');
+var csv = require("fast-csv");
+
+
+
 
 /*
 * Modelos a a importar
@@ -55,6 +60,54 @@ app.get('/getCotizacion',function(req,res){
              console.log(cotizacion);
         });
 });
+
+app.get('/import', function(req, res, next) {
+    
+    
+ const csvFilePath = 'file.csv';
+ var stream = fs.createReadStream(csvFilePath);
+ 
+    
+var csvStream = csv()
+        .on("data", function(data){
+         
+            
+         var item = new inventorySchema({
+
+              _id: data[0],
+             
+              DESCRIPTION: data[1],
+
+              PRICE: data[2],
+
+              UNITY_MESURE: data[3]
+
+
+         });
+               
+          item.save(function(error){
+
+            //console.log(item);
+
+              if(error){
+
+                   throw error;
+
+              }
+
+          }); 
+
+    }).on("end", function(){
+          console.log(" End of file import");
+    });
+  
+    stream.pipe(csvStream);
+
+    res.json({success : "Data imported successfully.", status : 200});
+     
+  })
+
+
 /*
 Puerto donde se escucha la Aplicacion
 */
