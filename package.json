@@ -1,0 +1,36 @@
+{
+  "name": "fylsaerp",
+  "version": "1.0.0",
+  "description": "Creation of Fylsa ERP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pacojulian/FylsaERP.git"
+  },
+  "keywords": [
+    "Fylsa",
+    "ERP"
+  ],
+  "author": "Allan Francisco Julian Novoa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pacojulian/FylsaERP/issues"
+  },
+  "homepage": "https://github.com/pacojulian/FylsaERP#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "client-sessions": "^0.8.0",
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "modules": "^0.4.0",
+    "mongoose": "^5.0.15",
+    "path": "^0.12.7",
+    "querystring": "^0.2.0",
+    "request": "^2.85.0"
+  }
+}

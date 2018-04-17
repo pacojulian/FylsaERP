@@ -1,0 +1,82 @@
+/*Associates*/
+
+db.getCollection('ASSOCIATES').insert({
+    ASSOCIATES_ID:"JUAN011",
+    NAME:"Juan Carlos ",
+    COMPANY_ID:"C_BARCEL",
+  
+    })
+
+    
+/*Company*/
+
+db.getCollection('COMPANY').insert({
+    COMPANY_ID:"C_BARCEL",
+    NAME:"BARCEL",
+    DIRECTION:"IZCALLI CUAUHTEMOC 3",
+    RFC:"JUNA96020",
+    })
+    
+    
+/*Cotizacion*/
+
+db.getCollection('COTIZACION').insert({
+    _id:"180315-1",
+    DATE:"18/03/15",
+    COMPANY:"BARCEL",
+    ADDRESED:"Ingeniero Juan Carlos",
+    REASON:"Suministro de Material Electrico",
+    COST:2000,
+    DELIVERY_TIME:"3 SEMANAS",
+    PAYMENT_CONDITIONS:"28 dias",
+    COTIZACION_SERVICE:[
+       {
+           ITEM:1,
+           DESCIPTION:"codo conduit 2 pulgadas",
+           PROVIDE:"Suministro",
+           CANTITY: 2,
+           MEASURE_UNIT:"PZA",
+           SALE_PRICE:200
+       },
+    {
+           ITEM:2,
+           DESCIPTION:"Cable pulgada 2 ",
+           PROVIDE:"Suministro e instalacion",
+           CANTITY: 10,
+           MEASURE_UNIT:"MT",
+           SALE_PRICE:100
+       }      
+    ]
+    })
+    
+/*Employees*/
+
+db.getCollection('EMPLOYEES').insert({
+    _id:001,
+    NAME:"Constanza",
+    LAST_NAME:"Lievanos Sanchez",
+    POSITION:"Desarrollador",
+    SALARY:2000,
+    SOCIAL_NUMBER:"A0123456789"
+    
+    })
+    
+/*Inventory*/
+
+db.getCollection('INVENTORY').insert({
+    _id: "codocondulet",
+    DESCRIPTION: "codo condulet",
+    PRICE: 200,
+    UNITY_MESURE: "PZA"
+    })
+    
+/*Users*/
+
+db.getCollection('USERS').insert({
+    _id:1,
+    EMAIL:"allanfrancisco.jn@gmail.com",
+    NAME:"Allan Francisco",
+    LASTNAME:"Julian Novoa",
+    PASSWORD:"no_encriptado",
+    ADMIN_ID:1
+    })
