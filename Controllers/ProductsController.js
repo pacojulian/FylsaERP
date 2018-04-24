@@ -23,18 +23,7 @@ app.use(bodyParse.json());
 var inventorySchema = require('../Model/InventorySchema');
 
 
-/*
-app.get('/getCotizacion',function(req,res){
-   
-  cotizacionSchema.find({},function(err, cotizacion) {
-            if (err)
-                res.send(err);
 
-            res.json(cotizacion);
-             console.log(cotizacion);
-        });
-});
-*/
 router.get('/import', function(req, res,next) {  
  const csvFilePath = 'file.csv';
  var stream = fs.createReadStream(csvFilePath);

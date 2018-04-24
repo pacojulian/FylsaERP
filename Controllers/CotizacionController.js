@@ -11,11 +11,8 @@ const router = express.Router();
 
 
 
-//app.use(bodyParse.json());
+app.use(bodyParse.json());
 
-/*
-* Modelo a usar
-*/
 
 var cotizacionSchema = require('../Model/CotizacionSchema');
 
@@ -48,5 +45,18 @@ router.post('/new',function(req,res){
     });
    
 });
+
+
+router.get('/getAll',function(req,res){
+   
+  cotizacionSchema.find({},function(err, cotizacion) {
+            if (err)
+                res.send(err);
+
+            res.json(cotizacion);
+            
+        });
+});
+
 
 module.exports = router;

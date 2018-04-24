@@ -11,7 +11,7 @@ const router = express.Router();
 
 
 
-//app.use(bodyParse.json());
+app.use(bodyParse.json());
 
 /*
 * Modelo a usar
