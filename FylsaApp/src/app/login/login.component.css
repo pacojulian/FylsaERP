@@ -1,0 +1,346 @@
+/* -----------------------------------------------------
+  Material Design - Mediahawkz.com Login Form
+  Form URL: http://www.mediahawkz.com/admin/login.php
+  By: Ravikumar Chauhan
+  Find me on -
+  Twitter: https://twitter.com/rkchauhan01
+  Facebook: https://www.facebook.com/ravi032chauhan
+  GitHub: https://github.com/rkchauhan
+  CodePen: https://codepen.io/rkchauhan
+-------------------------------------------------------- */
+/* -----------------------------------------------------
+  Body
+-------------------------------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+*, *::after, *::before {
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  color: #03a9f4;
+  outline: none;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.link {
+  color: #575757;
+  font-size: 14px;
+}
+
+.mediahawkz-login {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: auto;
+  height: auto;
+  background-color: #f9f9f9;
+}
+.mediahawkz-login .div-left {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 100%;
+  background-color: #2d2b2c;
+  background-image: url(../images/login_wallpaper.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 25%;
+}
+.mediahawkz-login .div-right {
+  overflow: auto;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 50%;
+  height: 100%;
+}
+.mediahawkz-login .copyright {
+  margin-top: 10%;
+  text-align: center;
+}
+.mediahawkz-login .copyright p {
+  color: #575757;
+  font-size: 13px;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  line-height: 0;
+  clear: both;
+}
+
+/* -----------------------------------------------------
+   Material Design Buttons - by Ravikumar Chauhan
+-------------------------------------------------------- */
+.rkmd-btn {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 1.5rem;
+  color: #424242;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: .8px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border-radius: 2px;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+}
+.rkmd-btn:hover {
+  text-decoration: none;
+}
+.rkmd-btn.btn-lightBlue {
+  color: #FFF;
+  background-color: #03a9f4;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.225);
+}
+.rkmd-btn.btn-lightBlue:hover {
+  box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.275);
+  background-color: #23b9fc;
+}
+
+.ripple-effect {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  z-index: 1;
+}
+.ripple-effect .ripple {
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  pointer-events: none;
+}
+.ripple-effect .animated {
+  -webkit-animation: ripple 0.6s linear;
+          animation: ripple 0.6s linear;
+}
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+  }
+}
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+  }
+}
+/* -----------------------------------------------------
+   Material Design Form - by Ravikumar Chauhan
+-------------------------------------------------------- */
+.rkmd-form {
+  max-width: 355px;
+  margin: 16% auto 0;
+}
+.rkmd-form .form-title {
+  margin: 0;
+  padding: 0;
+  color: #03a9f4;
+  font-size: 30px;
+  font-weight: 300;
+}
+.rkmd-form .form-row {
+  display: block;
+  margin-top: 0.925em;
+}
+.rkmd-form .remember {
+  margin-top: 6px;
+}
+.rkmd-form .form-field {
+  position: relative;
+  height: 72px;
+  margin-top: 1em;
+  padding: 16px 0 8px 0px;
+}
+.rkmd-form .form-field i {
+  display: none;
+  margin-top: 5px;
+  float: right;
+}
+.rkmd-form .form-field::after, .rkmd-form .form-field::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  bottom: 8px;
+  width: 100%;
+  height: 1px;
+  background-color: #cdcdcd;
+}
+.rkmd-form .form-field::after {
+  background-color: #03a9f4;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+.rkmd-form .form-field.focused::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+.rkmd-form .field-label {
+  position: relative;
+  display: block;
+  color: #575757;
+  font-size: 15px;
+  line-height: 16px;
+  -webkit-transform: translateY(24px);
+          transform: translateY(24px);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+.rkmd-form .field-input {
+  position: relative;
+  display: block;
+  color: #575757;
+  width: 100%;
+  height: 32px;
+  font-size: 15px;
+  line-height: 16px;
+  margin: 0;
+  padding: 4px 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.rkmd-form .has-label .field-label {
+  -webkit-transform: translateY(0) scale(0.85);
+          transform: translateY(0) scale(0.85);
+}
+.rkmd-form .focused .field-label {
+  color: #03a9f4;
+}
+.rkmd-form input[type="checkbox"] + label:before {
+  display: inline-block;
+  width: 1em;
+  color: #6e6e6e;
+  margin: 0 10px 0 0;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: -6px;
+  -webkit-transition: -webkit-transform 0.1s ease;
+  transition: -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease;
+  transition: transform 0.1s ease, -webkit-transform 0.1s ease;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  -webkit-font-feature-settings: 'liga';
+          font-feature-settings: 'liga';
+}
+.rkmd-form input[type="checkbox"] {
+  position: absolute;
+  visibility: hidden;
+}
+.rkmd-form input[type="checkbox"] + label {
+  cursor: pointer;
+  color: #575757;
+}
+.rkmd-form input[type="checkbox"] + label:before {
+  content: "\e835";
+}
+.rkmd-form input[type="checkbox"]:checked + label:before {
+  content: "\e834";
+  color: #03a9f4;
+}
+.rkmd-form input[type="checkbox"]:active:not(:disabled) + label:before {
+  -webkit-transform: scale3d(0.88, 0.88, 1);
+          transform: scale3d(0.88, 0.88, 1);
+}
+.rkmd-form input[type="checkbox"]:disabled + label:before {
+  content: "\e909";
+  cursor: not-allowed;
+  color: rgba(0, 0, 0, 0.157);
+}
+.rkmd-form .form-field[error]::after, .rkmd-form .form-field[error]::before {
+  background-color: #f44336 !important;
+}
+.rkmd-form .form-field[error] .field-label {
+  color: #f44336 !important;
+}
+.rkmd-form .form-field[error] i {
+  display: block;
+  color: #f44336 !important;
+}
+.rkmd-form .msg {
+  min-height: 20px;
+}
+.rkmd-form .error {
+  display: block;
+  margin: 0;
+  padding: 0;
+  color: #f44336 !important;
+  font-size: 14px;
+}
+.rkmd-form .default {
+  color: #575757 !important;
+  font-size: 14px;
+}

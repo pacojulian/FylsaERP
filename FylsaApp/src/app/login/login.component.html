@@ -1,0 +1,30 @@
+  <!-- Main content -->
+<main role="main">
+  <div class="mediahawkz-login">
+    <div class="div-left"></div>
+    <div class="div-right">
+      <div class="rkmd-form login">
+        <h2 class="form-title">Iniciar Sesion</h2>
+   
+          <div class="form-field">
+           
+            <input  [(ngModel)]= 'userName' type="text"  class="field-input" placeholder="Usuario">
+            <i class="material-icons md-18">error_outline</i>
+          </div>
+          <div class="form-field">
+            
+            <input [(ngModel)]= 'password' type="password" name="pass" class="field-input" placeholder="Contraseña">
+            <i class="material-icons md-18">error_outline</i>
+          </div>
+          <div class="form-row clearfix">
+            <input (click)="loginUser()" type="button" value="login" id="btnlogin" class="rkmd-btn btn-lightBlue ripple-effect float-left" >
+                
+          </div>
+       
+       
+      </div>
+     
+    </div>
+  </div>
+</main>
+  
