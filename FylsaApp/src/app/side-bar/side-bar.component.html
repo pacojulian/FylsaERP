@@ -6,20 +6,27 @@
                 <ul class="list-unstyled components">
                     <p>Modulos</p>
                     <li class="active">
-                        <a href="">Productos y Servicios</a>
+                           <a href="#servicesSubmenu" data-toggle="collapse" aria-expanded="false">Productos y Servicios</a>
+                        <ul class="collapse list-unstyled" id="servicesSubmenu">
+                            <li ><a (click)="viewProductsImport()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir Productos CSV</a></li>
+                            
+                        </ul>
                     </li>
                     <li>
                         <a href="#companySubmenu" data-toggle="collapse" aria-expanded="false">Compañia</a>
                         <ul class="collapse list-unstyled" id="companySubmenu">
-                            <li><a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir Compañia</a></li>
-                            <li><a href="#">Editar Compañia</a></li>
-                            <li><a href="#">Eliminar Compañia</a></li>
+                             <li><a (click)="viewNewCompanyAll()">Ver Compañias</a></li>
+                            <li><a (click)="viewNewCompanyNew()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir Compañia</a></li>                         
+                            <li><a (click)="viewNewCompanyUpdate()">Editar Compañia</a></li>
+                            <li><a (click)="viewNewCompanyDelete()">Eliminar Compañia</a></li>
                            
                           <a href="#associateSubmenu" data-toggle="collapse" aria-expanded="false">Asociados</a>
                              <ul class="collapse list-unstyled" id="associateSubmenu">
-                            <li><a href="#">Añadir Asociado</a></li>
-                            <li><a href="#">Editar Asociado</a></li>
-                            <li><a href="#">Eliminar Asociado</a></li>
+                            <li><a (click)=" viewAssociatesRead()">Ver Asociados</a></li>
+                            <li><a (click)="viewAssociatesNew()">Añadir Asociado</a></li>
+                            <li><a (click)="viewAssociatesUpdate()">Editar Asociado</a></li>
+                            <li><a (click)=" viewAssociatesRemove()">Eliminar Asociado</a></li>
+                          
                             </ul>
                             
                         </ul>
@@ -27,8 +34,8 @@
                     <li>
                         <a href="#cotizacionSubmenu" data-toggle="collapse" aria-expanded="false">Cotizacion</a>
                         <ul class="collapse list-unstyled" id="cotizacionSubmenu">
-                            <li (click)="viewNewCompany()"><a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Generar Nueva Cotizacion</a></li>
-                            <li><a href="#">Home 2</a></li>
+                            <li ><a (click)="viewCotizacionNew()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Generar Nueva Cotizacion</a></li>
+                            
                         </ul>
                     </li>
                     

@@ -21,13 +21,13 @@ const productsC = require('./Controllers/ProductsController');
 const companyC = require('./Controllers/CompanyController');
 const associatesC = require('./Controllers/AssociatesController');
 const cotizacionC = require('./Controllers/CotizacionController');
-/*
-* Modelos a a importar
 
-var cotizacionSchema = require('./Model/CotizacionSchema');
-
-*/
 app.use(bodyParse.json());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use('/users',usersC);
 app.use('/auth',authenticationC);
@@ -35,6 +35,13 @@ app.use('/products',productsC);
 app.use('/company',companyC);
 app.use('/associates',associatesC);
 app.use('/cotizacion',cotizacionC);
+
+app.post('/prueba',function(req,res){
+    
+    console.log(req.body);
+    //return req.body;
+    
+});
 
 
 

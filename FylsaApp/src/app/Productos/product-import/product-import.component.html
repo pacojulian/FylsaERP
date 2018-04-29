@@ -1,0 +1,29 @@
+<h1>Importar Productos</h1>
+
+<!--<div class="form-group">
+    <label for="file">Choose File</label>
+    <input type="file"
+           id="file"
+           (change)="handleFileInput($event.target.files)">
+</div>-->
+
+ <form class="well" action="" method="post" enctype="multipart/form-data">
+                        <fieldset>
+                            <legend>Importar CSV/Excel </legend>
+                            <div class="control-group">
+                                <div class="control-label">
+                                    <label>CSV/Excel File:</label>
+                                </div>
+                                <div class="controls form-group">
+                                    <input type="file" id="file" class="input-large form-control" (change)="handleFileInput($event.target.files)">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <div class="controls">
+
+                                <button type="submit" id="submit" name="Import" class="btn btn-success btn-flat btn-lg pull-right button-loading" data-loading-text="Loading..." (click)="doGET()">Importar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>

@@ -30,6 +30,10 @@
                     $('.collapse.in').toggleClass('in');
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
+                
+                	$(".input").focus(function() {
+	 		$(this).parent().addClass("focus");
+	 	})
             });
         </script>
 
