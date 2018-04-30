@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import{Router} from '@angular/router';
-import * as $ from 'jquery';
 
 @Component({
   selector: 'app-side-bar',
@@ -38,27 +37,25 @@ export class SideBarComponent implements OnInit {
     * Products View
     */
      viewProductsImport(){
-
-        this.router.navigate(['Products/Import']);
+        this.router.navigate(['Dashboard/Products/Import']);
     }
     /*
     Asociados View
     */
       viewAssociatesNew(){
-
-        this.router.navigate(['Associates/New']);
+        this.router.navigate(['Dashboard/Associates/New']);
     }
       viewAssociatesRead(){
 
-        this.router.navigate(['Associates/Read']);
+        this.router.navigate(['Dashboard/Associates/Read']);
     }
       viewAssociatesUpdate(){
 
-        this.router.navigate(['Associates/Update']);
+        this.router.navigate(['Dashboard/Associates/Update']);
     }
        viewAssociatesRemove(){
 
-        this.router.navigate(['Associates/Remove']);
+        this.router.navigate(['Dashboard/Associates/Remove']);
     }
     /*
     * Cotizacion View
