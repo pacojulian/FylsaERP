@@ -4,41 +4,41 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p>Modulos</p>
-                    <li class="active">
-                           <a href="#servicesSubmenu" data-toggle="collapse" aria-expanded="false">Productos y Servicios</a>
+                    <p>Módulos</p>
+                    <li >
+                           <a href="#servicesSubmenu" data-toggle="collapse" aria-expanded="false"><img [src]="'assets/icons/products.svg'" class="image-icon" alt="productos image">Productos y Servicios</a>
                         <ul class="collapse list-unstyled" id="servicesSubmenu">
-                            <li ><a (click)="viewProductsImport()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir Productos CSV</a></li>
-                            
+                            <li ><a (click)="viewProductsImport()"><img [src]="'assets/icons/add.svg'" class="small-image-icon" alt="anadir image">Añadir Productos CSV</a></li>
+
                         </ul>
                     </li>
                     <li>
-                        <a href="#companySubmenu" data-toggle="collapse" aria-expanded="false">Compañia</a>
+                        <a href="#companySubmenu" data-toggle="collapse" aria-expanded="false"><img [src]="'assets/icons/company.svg'" class="image-icon" alt="compañia image">Compañía</a>
                         <ul class="collapse list-unstyled" id="companySubmenu">
-                             <li><a (click)="viewNewCompanyAll()">Ver Compañias</a></li>
-                            <li><a (click)="viewNewCompanyNew()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Añadir Compañia</a></li>                         
-                            <li><a (click)="viewNewCompanyUpdate()">Editar Compañia</a></li>
-                            <li><a (click)="viewNewCompanyDelete()">Eliminar Compañia</a></li>
-                           
-                          <a href="#associateSubmenu" data-toggle="collapse" aria-expanded="false">Asociados</a>
+                             <li><a (click)="viewNewCompanyAll()"><img [src]="'assets/icons/view.svg'" class="small-image-icon" alt="ver image">Ver Compañías</a></li>
+                            <li><a (click)="viewNewCompanyNew()"><img [src]="'assets/icons/add.svg'" class="small-image-icon" alt="anadir image">Añadir Compañia</a></li>
+                            <li><a (click)="viewNewCompanyUpdate()"><img [src]="'assets/icons/edit.svg'" class="small-image-icon" alt="editar image">Editar Compañia</a></li>
+                            <li><a (click)="viewNewCompanyDelete()"><img [src]="'assets/icons/delete.svg'" class="small-image-icon" alt="eliminar image">Eliminar Compañia</a></li>
+
+                          <a href="#associateSubmenu" data-toggle="collapse" aria-expanded="false"><img [src]="'assets/icons/associates.svg'" class="image-icon" alt="image">Asociados</a>
                              <ul class="collapse list-unstyled" id="associateSubmenu">
-                            <li><a (click)=" viewAssociatesRead()">Ver Asociados</a></li>
-                            <li><a (click)="viewAssociatesNew()">Añadir Asociado</a></li>
-                            <li><a (click)="viewAssociatesUpdate()">Editar Asociado</a></li>
-                            <li><a (click)=" viewAssociatesRemove()">Eliminar Asociado</a></li>
-                          
+                            <li><a (click)=" viewAssociatesRead()"><img [src]="'assets/icons/view.svg'" class="small-image-icon" alt="ver image">Ver Asociados</a></li>
+                            <li><a (click)="viewAssociatesNew()"><img [src]="'assets/icons/add.svg'" class="small-image-icon" alt="anadir image">Añadir Asociado</a></li>
+                            <li><a (click)="viewAssociatesUpdate()"><img [src]="'assets/icons/edit.svg'" class="small-image-icon" alt="editar image">Editar Asociado</a></li>
+                            <li><a (click)=" viewAssociatesRemove()"><img [src]="'assets/icons/delete.svg'" class="small-image-icon" alt="eliminar ">Eliminar Asociado</a></li>
+
                             </ul>
-                            
+
                         </ul>
                     </li>
                     <li>
-                        <a href="#cotizacionSubmenu" data-toggle="collapse" aria-expanded="false">Cotizacion</a>
+                        <a href="#cotizacionSubmenu" data-toggle="collapse" aria-expanded="false"><img [src]="'assets/icons/quotes.svg'" class="image-icon" alt="image">Cotización</a>
                         <ul class="collapse list-unstyled" id="cotizacionSubmenu">
-                            <li ><a (click)="viewCotizacionNew()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Generar Nueva Cotizacion</a></li>
-                            
+                            <li ><a (click)="viewCotizacionNew()"><img [src]="'assets/icons/add.svg'" class="small-image-icon" alt="anadir image"> Generar Nueva Cotizacion</a></li>
+
                         </ul>
                     </li>
-                    
+
                   <!--  <li class="active">
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
                         <ul class="collapse list-unstyled" id="homeSubmenu">

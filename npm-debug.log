@@ -1,0 +1,148 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'jquery',
+1 verbose cli   '-',
+1 verbose cli   'save' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.3
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData jquery
+8 silly fetchPackageMetaData -
+9 silly fetchPackageMetaData save
+10 silly fetchNamedPackageData jquery
+11 silly mapToRegistry name jquery
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry https://registry.npmjs.org/
+14 silly mapToRegistry data Result {
+14 silly mapToRegistry   raw: 'jquery',
+14 silly mapToRegistry   scope: null,
+14 silly mapToRegistry   escapedName: 'jquery',
+14 silly mapToRegistry   name: 'jquery',
+14 silly mapToRegistry   rawSpec: '',
+14 silly mapToRegistry   spec: 'latest',
+14 silly mapToRegistry   type: 'tag' }
+15 silly mapToRegistry uri https://registry.npmjs.org/jquery
+16 silly fetchOtherPackageData -
+17 silly cache add args [ '-', null ]
+18 verbose cache add spec -
+19 silly fetchNamedPackageData save
+20 silly mapToRegistry name save
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry data Result {
+23 silly mapToRegistry   raw: 'save',
+23 silly mapToRegistry   scope: null,
+23 silly mapToRegistry   escapedName: 'save',
+23 silly mapToRegistry   name: 'save',
+23 silly mapToRegistry   rawSpec: '',
+23 silly mapToRegistry   spec: 'latest',
+23 silly mapToRegistry   type: 'tag' }
+24 silly mapToRegistry uri https://registry.npmjs.org/save
+25 silly cache add parsed spec Result {
+25 silly cache add   raw: '-',
+25 silly cache add   scope: null,
+25 silly cache add   escapedName: null,
+25 silly cache add   name: null,
+25 silly cache add   rawSpec: '-',
+25 silly cache add   spec: 'D:\\Users\\cocoy\\Documents\\Projects\\Fylsa\\FylsaERP\\-',
+25 silly cache add   type: 'local' }
+26 error addLocal Could not install D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP\-
+27 silly fetchPackageMetaData Error: ENOENT: no such file or directory, open 'D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP\-'
+27 silly fetchPackageMetaData     at Error (native)
+27 silly fetchPackageMetaData  error for - { Error: ENOENT: no such file or directory, open 'D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP\-'
+27 silly fetchPackageMetaData     at Error (native)
+27 silly fetchPackageMetaData   errno: -4058,
+27 silly fetchPackageMetaData   code: 'ENOENT',
+27 silly fetchPackageMetaData   syscall: 'open',
+27 silly fetchPackageMetaData   path: 'D:\\Users\\cocoy\\Documents\\Projects\\Fylsa\\FylsaERP\\-' }
+28 verbose request uri https://registry.npmjs.org/save
+29 verbose request no auth needed
+30 info attempt registry request try #1 at 21:49:33
+31 verbose request id 771b681e0e16ed59
+32 verbose etag "5a26d750-a00a"
+33 verbose lastModified Tue, 5 Dec 2017 17:28:48 GMT
+34 http request GET https://registry.npmjs.org/save
+35 verbose request uri https://registry.npmjs.org/jquery
+36 verbose request no auth needed
+37 info attempt registry request try #1 at 21:49:33
+38 verbose etag "5aac9424-17db2"
+39 verbose lastModified Sat, 17 Mar 2018 4:05:56 GMT
+40 http request GET https://registry.npmjs.org/jquery
+41 http 304 https://registry.npmjs.org/jquery
+42 verbose headers { date: 'Mon, 30 Apr 2018 02:49:34 GMT',
+42 verbose headers   via: '1.1 varnish',
+42 verbose headers   'cache-control': 'max-age=300',
+42 verbose headers   etag: '"5aac9424-17db2"',
+42 verbose headers   age: '13050',
+42 verbose headers   connection: 'keep-alive',
+42 verbose headers   'x-served-by': 'cache-dfw18634-DFW',
+42 verbose headers   'x-cache': 'HIT',
+42 verbose headers   'x-cache-hits': '1',
+42 verbose headers   'x-timer': 'S1525056574.052416,VS0,VE1',
+42 verbose headers   vary: 'Accept-Encoding, Accept' }
+43 silly get cb [ 304,
+43 silly get   { date: 'Mon, 30 Apr 2018 02:49:34 GMT',
+43 silly get     via: '1.1 varnish',
+43 silly get     'cache-control': 'max-age=300',
+43 silly get     etag: '"5aac9424-17db2"',
+43 silly get     age: '13050',
+43 silly get     connection: 'keep-alive',
+43 silly get     'x-served-by': 'cache-dfw18634-DFW',
+43 silly get     'x-cache': 'HIT',
+43 silly get     'x-cache-hits': '1',
+43 silly get     'x-timer': 'S1525056574.052416,VS0,VE1',
+43 silly get     vary: 'Accept-Encoding, Accept' } ]
+44 verbose etag https://registry.npmjs.org/jquery from cache
+45 verbose get saving jquery to C:\Users\cocoy\AppData\Roaming\npm-cache\registry.npmjs.org\jquery\.cache.json
+46 verbose correctMkdir C:\Users\cocoy\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+47 http 304 https://registry.npmjs.org/save
+48 verbose headers { date: 'Mon, 30 Apr 2018 02:49:34 GMT',
+48 verbose headers   via: '1.1 varnish',
+48 verbose headers   'cache-control': 'max-age=300',
+48 verbose headers   etag: '"5a26d750-a00a"',
+48 verbose headers   age: '93',
+48 verbose headers   connection: 'keep-alive',
+48 verbose headers   'x-served-by': 'cache-dfw18641-DFW',
+48 verbose headers   'x-cache': 'HIT',
+48 verbose headers   'x-cache-hits': '1',
+48 verbose headers   'x-timer': 'S1525056574.056594,VS0,VE1',
+48 verbose headers   vary: 'Accept-Encoding, Accept' }
+49 silly get cb [ 304,
+49 silly get   { date: 'Mon, 30 Apr 2018 02:49:34 GMT',
+49 silly get     via: '1.1 varnish',
+49 silly get     'cache-control': 'max-age=300',
+49 silly get     etag: '"5a26d750-a00a"',
+49 silly get     age: '93',
+49 silly get     connection: 'keep-alive',
+49 silly get     'x-served-by': 'cache-dfw18641-DFW',
+49 silly get     'x-cache': 'HIT',
+49 silly get     'x-cache-hits': '1',
+49 silly get     'x-timer': 'S1525056574.056594,VS0,VE1',
+49 silly get     vary: 'Accept-Encoding, Accept' } ]
+50 verbose etag https://registry.npmjs.org/save from cache
+51 verbose get saving save to C:\Users\cocoy\AppData\Roaming\npm-cache\registry.npmjs.org\save\.cache.json
+52 verbose correctMkdir C:\Users\cocoy\AppData\Roaming\npm-cache correctMkdir already in flight; waiting
+53 silly rollbackFailedOptional Starting
+54 silly rollbackFailedOptional Finishing
+55 silly runTopLevelLifecycles Finishing
+56 silly install printInstalled
+57 verbose stack Error: ENOENT: no such file or directory, open 'D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP\-'
+57 verbose stack     at Error (native)
+58 verbose cwd D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP
+59 error Windows_NT 10.0.16299
+60 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "jquery" "-" "save"
+61 error node v6.11.3
+62 error npm  v3.10.10
+63 error path D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP\-
+64 error code ENOENT
+65 error errno -4058
+66 error syscall open
+67 error enoent ENOENT: no such file or directory, open 'D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP\-'
+68 error enoent ENOENT: no such file or directory, open 'D:\Users\cocoy\Documents\Projects\Fylsa\FylsaERP\-'
+68 error enoent This is most likely not a problem with npm itself
+68 error enoent and is related to npm not being able to find a file.
+69 verbose exit [ -4058, true ]

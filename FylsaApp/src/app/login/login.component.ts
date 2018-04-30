@@ -15,12 +15,12 @@ export class LoginComponent implements OnInit {
     @Input()
     password: string;
 
-  constructor(
-      private router:Router
-  ) { }
+  constructor(private router:Router) {
+
+  }
 
   public ngOnInit() {
-     
+
 
   }
     loginUser(){
