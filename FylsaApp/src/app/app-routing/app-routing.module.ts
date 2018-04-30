@@ -40,30 +40,31 @@ const routes: Routes = [
              [
              {path:'new',component:CotizacionNewComponent}
              ]
-         }
+         },
+           {
+            path:'Products',
+                children:
+                [
+                    {path:'Import',component:ProductImportComponent}
+                ]
+    },
+      {
+            path:'Associates',
+                children:
+                         [
+                             {path:'New',component:AssociatesNewComponent},
+                             {path:'Read',component:AssociatesReadComponent},
+                             {path:'Remove',component:AssociatesRemoveComponent},
+                             {path:'Update',component:AssociatesUpdateComponent}
+                         ]
+                }
       
      
      
     
      ]
- },
-    {
-        path:'Products',component:DashboardComponent,
-        children:
-        [
-            {path:'Import',component:ProductImportComponent}
-        ]
-    },
-      {
-            path:'Associates',component:DashboardComponent,
-            children:
-                     [
-                         {path:'New',component:AssociatesNewComponent},
-                         {path:'Read',component:AssociatesReadComponent},
-                         {path:'Remove',component:AssociatesRemoveComponent},
-                         {path:'Update',component:AssociatesUpdateComponent}
-                     ]
-            }
+ }
+  
 ];
 @NgModule({
     imports:[RouterModule.forRoot(routes)],
