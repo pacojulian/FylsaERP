@@ -25,7 +25,8 @@ const cotizacionC = require('./Controllers/CotizacionController');
 app.use(bodyParse.json());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With,Content-Type, Accept");
+    
   next();
 });
 
@@ -39,12 +40,11 @@ app.use('/cotizacion',cotizacionC);
 app.post('/prueba',function(req,res){
     
     console.log(req.body);
+    //res.header("Content-Type", "application/json");
+    res.end("{\"val\":\""+req.body.paco+"\"}");
     //return req.body;
     
-});
-
-
-
+    });
 
 /*
 Puerto donde se escucha la Aplicacion

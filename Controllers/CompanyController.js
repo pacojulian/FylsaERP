@@ -37,11 +37,12 @@ router.post('/new',function(req,res){
 });
 
 router.get('/find',function(req,res){
-        
+        console.log(req.query.id)
     var companyId = req.query.id;
       companySchema.findOne({_id:companyId})
     .select('-_id')
-    .then(company  => {           
+    .then(company  => {
+          console.log(company);
               res.json(company);           
               console.log(company); 
          
@@ -55,12 +56,13 @@ router.get('/find',function(req,res){
 });
 
 
-router.put('/update',function(req,res){
+router.post('/update',function(req,res){
     //console.log(req.body._id);
     companySchema.findByIdAndUpdate(req.body._id,req.body,{new: true},
     (err, company) => {
         if (err) return res.status(500).send(err);
-        return res.send(company);
+          return res.send(company);
+        
     }
 )
 

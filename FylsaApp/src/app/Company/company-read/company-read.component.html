@@ -1,18 +1,24 @@
-<form class="contact100-form validate-form">
+<form class="contact100-form validate-form" (ngSubmit)="getCompany()">
 				<span class="contact100-form-title">
 					Lista de Compañías
 				</span>
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Id de la Compañía</span>
-					<input class="input100" type="text" name="name" placeholder="Id de la Compañía">
+					<input [(ngModel)]= "company._id" class="input100" type="text" name="name"   >
 					<span class="focus-input100"></span>
 				</div>
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
+					<button type="submit" class="contact100-form-btn">
 						<span>
 							Buscar
 						</span>
 					</button>
 				</div>
 			</form>
+
+<pre>{{company.NAME}}</pre>
+<pre>{{company.DIRECTION}}</pre>
+<pre>{{company.RFC}}</pre>
+
+

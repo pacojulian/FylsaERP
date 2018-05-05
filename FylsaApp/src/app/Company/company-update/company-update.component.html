@@ -5,34 +5,35 @@
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Id de la Compañía (Requerido)</span>
-					<input class="input100" type="text" name="name" placeholder="Id de la Compañía">
+					<input [(ngModel)]= "company._id" class="input100" type="text" name="name" value="{{company._id}}" >
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Nombre</span>
-					<input class="input100" type="text" name="name" placeholder="Nombre de la Compañía">
+					<input #companyName class="input100" type="text" name="name" placeholder="Nombre de la Compañía" value="{{company.NAME}}">
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Dirección</span>
-					<input class="input100" type="text" name="name" placeholder="Dirección de la Compañía">
+					<input #companyDirection class="input100" type="text" name="name" placeholder="Dirección de la Compañía" value="{{company.DIRECTION}}">
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">RFC</span>
-					<input class="input100" type="text" name="name" placeholder="RFC de la Compañía">
+					<input #companyRfc class="input100" type="text" name="name" placeholder="RFC de la Compañía" value="{{company.RFC}}">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
+					<button (click)="getCompany()" class="contact100-form-btn">
 						<span>
 							Buscar por Id
 						</span>
 					</button>
-          <button class="contact100-form-btn save-btn">
+          <button (click)="updateCompany(companyName.value,companyDirection.value,companyRfc.value)" class="contact100-form-btn save-btn">
             <span>
               Guardar compañía
             </span>
           </button>
 				</div>
 			</form>
+

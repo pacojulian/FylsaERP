@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {CompanyService} from '../company.service';
+import {Company} from '../../Models/company';
+
 
 @Component({
   selector: 'app-company-read',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyReadComponent implements OnInit {
 
-  constructor() { }
+    
+    company: Company;
+    constructor(private companyService:CompanyService) {
+     this.company = new Company("","","","");
+   }
 
   ngOnInit() {
+        
   }
-
+    getCompany(){
+       
+         this.companyService.findCompany(this.company._id).subscribe((res: any) =>{
+             this.company = res;
+         });
+    }
 }

@@ -20,6 +20,7 @@ import { CompanyNewComponent } from './Company/company-new/company-new.component
 import { CompanyReadComponent } from './Company/company-read/company-read.component';
 import { CompanyDeleteComponent } from './Company/company-delete/company-delete.component';
 import { CompanyUpdateComponent } from './Company/company-update/company-update.component';
+import {CompanyService} from './Company/company.service';
 
 
 @NgModule({
@@ -47,7 +48,9 @@ import { CompanyUpdateComponent } from './Company/company-update/company-update.
       FormsModule,
       HttpClientModule
   ],
-  providers: [],
+  providers: [
+      CompanyService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
