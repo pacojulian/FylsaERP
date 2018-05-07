@@ -21,6 +21,7 @@ import { CompanyReadComponent } from './Company/company-read/company-read.compon
 import { CompanyDeleteComponent } from './Company/company-delete/company-delete.component';
 import { CompanyUpdateComponent } from './Company/company-update/company-update.component';
 import {CompanyService} from './Company/company.service';
+import {AssociatesService} from './Associates/associates.service';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import {CompanyService} from './Company/company.service';
       HttpClientModule
   ],
   providers: [
-      CompanyService
+      CompanyService,
+      AssociatesService
   ],
   bootstrap: [AppComponent]
 })

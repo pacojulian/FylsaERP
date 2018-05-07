@@ -55,7 +55,7 @@ router.get('/find',function(req,res){
 });
 
 
-router.put('/update',function(req,res){
+router.post('/update',function(req,res){
     //console.log(req.body._id);
     associatesSchema.findByIdAndUpdate(req.body._id,req.body,{new: true},
     (err, associates) => {
