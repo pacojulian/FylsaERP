@@ -9,24 +9,36 @@ import {Associates} from '../../Models/associates';
 })
 export class AssociatesNewComponent implements OnInit {
 
-    public associates: Associates;
-  countries = [
-       {id: 1, name: "United States"},
-       {id: 2, name: "Australia"},
-       {id: 3, name: "Canada"},
-       {id: 4, name: "Brazil"},
-       {id: 5, name: "England"}
-     ];
+     associates: Associates;    
+  companies = [];
  selectedValue = null;
   constructor(private  associatesService: AssociatesService) {
-      this.associates = new Associates("","","");
+      this.associates = new Associates("","","",0);
+      
    }
   ngOnInit() {
+      
+      
+     this.associatesService.findAll().subscribe(res => {for(let i in res){
+           var obj = {} as this.companies;
+          obj.name =res[i].NAME;
+          this.companies.push(obj);}     
+      }      
+      );
+   // this.getAssociates(); 
   }
+
+   /* getAssociates (){
+        this.associatesService.findAll().subscribe(res =>{this.associatesAll= res;
+                                                         console.log(this.associatesAll[1].COMPANY);});        
+    }*/
 
     
     createAssociate(){
+        this.associates.COMPANY = this.selectedValue.name;
         console.log(this.associates);
-        //this.companyService.newCompany(this.company);
+        
+    
+        this.associatesService.newAssociate(this.associates);
     }
 }

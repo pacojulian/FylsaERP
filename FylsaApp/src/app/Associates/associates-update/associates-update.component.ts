@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AssociatesService} from '../associates.service';
+import {Associates} from '../../Models/associates';
 
 @Component({
   selector: 'app-associates-update',
@@ -7,9 +9,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociatesUpdateComponent implements OnInit {
 
-  constructor() { }
-
+    associates: Associates;
+    companies = [];
+    selectedValue = null;
+    associatesID:string;
+    associatesName:string;
+    constructor(private associatesService:AssociatesService) {
+     this.associates = new Associates("","","",0);
+   }
   ngOnInit() {
+      
+      
+     this.associatesService.findAll().subscribe(res => {for(let i in res){
+           var obj = {} as this.companies;
+          obj.name =res[i].NAME;
+          this.companies.push(obj);}     
+      }      
+      );
+
   }
 
+    findAssociate(){
+       
+         this.associatesID= this.associates._id;
+         this.associatesService.findAssociate(this.associates._id).subscribe((res: any) =>{
+             this.associates = res;
+           
+         });
+    }
+    updateAssociate(name:string){
+        
+        this.associates._id= this.associatesID;
+        this.associates.NAME= name;
+        this.associates.COMPANY= this.selectedValue.name;
+       this.associatesService.updateAssociate(this.associates).subscribe((res) => alert("Associate Updated Succesfully"));
+    }
 }
+

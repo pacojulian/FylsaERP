@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AssociatesService} from '../associates.service';
+import {Associates} from '../../Models/associates';
 
 @Component({
   selector: 'app-associates-read',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociatesReadComponent implements OnInit {
 
-  constructor() { }
+    associates: Associates;
+    constructor(private associatesService:AssociatesService) {
+     this.associates = new Associates("","","",0);
+   }
 
   ngOnInit() {
   }
-
+   getAssociates(){
+       
+         this.associatesService.findAssociate(this.associates._id).subscribe((res: any) =>{
+             this.associates = res;
+         });
+    }
 }
+

@@ -1,11 +1,11 @@
-<form class="contact100-form validate-form">
+<form class="contact100-form validate-form" (ngSubmit)="getAssociates()">
 				<span class="contact100-form-title">
 					Lista de Asociados
 				</span>
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Id del Asociado</span>
-					<input class="input100" type="text" name="name" placeholder="Id del Asociado">
+					<input [(ngModel)]= "associates._id" class="input100" type="text" name="name" placeholder="Id del Asociado">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="container-contact100-form-btn">
@@ -16,3 +16,7 @@
 					</button>
 				</div>
 			</form>
+
+<pre>{{associates.NAME}}</pre>
+<pre>{{associates.COMPANY}}</pre>
+

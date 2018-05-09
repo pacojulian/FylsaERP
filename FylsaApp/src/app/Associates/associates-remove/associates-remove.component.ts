@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AssociatesService} from '../associates.service';
+import {Associates} from '../../Models/associates';
+
 
 @Component({
   selector: 'app-associates-remove',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociatesRemoveComponent implements OnInit {
 
-  constructor() { }
+     associates: Associates;    
 
+  constructor(private  associatesService: AssociatesService) {
+      this.associates = new Associates("","","",0);
+      
+   }
   ngOnInit() {
   }
-
+ deleteAssociate(){
+         this.associatesService.deleteAssociate(this.associates._id).subscribe((res) => alert(JSON.stringify(res["success"])));
+    }
 }
+ 

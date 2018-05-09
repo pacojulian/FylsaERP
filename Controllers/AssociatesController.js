@@ -53,6 +53,19 @@ router.get('/find',function(req,res){
      })
    
 });
+router.get('/findAll',function(req,res){   
+      associatesSchema.find({})
+    .then(associates  => {           
+              res.json(associates);           
+              console.log(associates);               
+        })
+          .catch(error => {
+         res.json({error:"Error"});
+         
+     })
+   
+});
+
 
 
 router.post('/update',function(req,res){
