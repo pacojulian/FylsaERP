@@ -6,6 +6,7 @@ var InventorySchema = new Schema({
     _id: String,
     DESCRIPTION:String,
     PRICE: { type: Number},
+    LABOR_PRICE: { type: Number},
     UNITY_MESURE:String
 
 },{collection:'INVENTORY'});

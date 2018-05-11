@@ -22,6 +22,21 @@ app.use(bodyParse.json());
 
 var inventorySchema = require('../Model/InventorySchema');
 
+router.get('/find',function(req,res){
+    
+          
+    var productDesc = req.query.desc;
+      inventorySchema.find({DESCRIPTION: new RegExp(productDesc,'i')})
+    .select('-_id')
+    .then(products  => {                
+              res.json(products);  
+          console.log(products);       
+        })
+          .catch(error => {
+         res.json({error:"Error"});
+         
+     })
+});
 
 
 router.get('/import', function(req, res,next) {  
@@ -40,8 +55,11 @@ var csvStream = csv()
               DESCRIPTION: data[1],
 
               PRICE: data[2],
+             
+              LABOR_PRICE: data[3],
+             
 
-              UNITY_MESURE: data[3]
+              UNITY_MESURE: data[4]
 
 
          });

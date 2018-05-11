@@ -53,9 +53,22 @@ router.get('/find',function(req,res){
      })
    
 });
+router.get('/findAll',function(req,res){   
+      associatesSchema.find({})
+    .then(associates  => {           
+              res.json(associates);           
+              console.log(associates);               
+        })
+          .catch(error => {
+         res.json({error:"Error"});
+         
+     })
+   
+});
 
 
-router.put('/update',function(req,res){
+
+router.post('/update',function(req,res){
     //console.log(req.body._id);
     associatesSchema.findByIdAndUpdate(req.body._id,req.body,{new: true},
     (err, associates) => {

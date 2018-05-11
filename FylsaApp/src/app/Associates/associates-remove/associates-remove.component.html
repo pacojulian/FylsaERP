@@ -1,18 +1,19 @@
-<form class="contact100-form validate-form">
+<form class="contact100-form validate-form" (ngSubmit)="deleteAssociate()">
 				<span class="contact100-form-title">
 					Eliminar Asociado
 				</span>
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Id del Asociado</span>
-					<input class="input100" type="text" name="name" placeholder="Id del Asociado">
+					<input  [(ngModel)]= "associates._id" class="input100" type="text" name="name" placeholder="Id del Asociado">
 					<span class="focus-input100"></span>
 				</div>
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn delete-btn">
+					<button type="submit" class="contact100-form-btn delete-btn">
 						<span>
 							Eliminar
 						</span>
 					</button>
 				</div>
 			</form>
+ 

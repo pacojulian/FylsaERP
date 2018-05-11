@@ -5,7 +5,7 @@ var AssociatesSchema = new Schema({
     
     _id: String,
     NAME:String,
-    COMPANY_ID:String
+    COMPANY:String
 
 
 },{collection:'ASSOCIATES'});

@@ -5,34 +5,32 @@
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Id del Asociado</span>
-					<input class="input100" type="text" name="name" placeholder="Id del Asociado">
+					<input  [(ngModel)]= "associates._id" class="input100" type="text" name="name" placeholder="Id del Asociado" value="{{associates._id}}" >
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Nombre</span>
-					<input class="input100" type="text" name="name" placeholder="Nombre del Asociado">
+					<input  #associateName class="input100" type="text" name="name" placeholder="Nombre del Asociado"  value="{{associates.NAME}}">
 					<span class="focus-input100"></span>
 				</div>
-        <div class="wrap-input100 rs1-wrap-input100 validate-input select-input" data-validate="Name is required">
-					<span class="label-input100">State</span>
-					<select class="form-control" id="state_id">
-						<option value="AL">Barcel</option>
-						<option value="AK">Dobos</option>
-						<option value="AK">Dobos</option>
-						<option value="AK">Dobos</option>
+     <div class="wrap-input100 rs1-wrap-input100 validate-input select-input" data-validate="Name is required">
+					<span class="label-input100">Compañia</span>
+					<select class="form-control"  [(ngModel)]="selectedValue"  [ngModelOptions]="{standalone: true}">
+						<option *ngFor="let c of companies" [ngValue]="c">{{c.name}}</option>
 					</select>
 				</div>
 
 				<div class="container-contact100-form-btn">
-					<button class="contact100-form-btn">
+					<button (click)="findAssociate()" class="contact100-form-btn">
 						<span>
 							Buscar por Id
 						</span>
 					</button>
-        <button class="contact100-form-btn save-btn">
+        <button (click)="updateAssociate(associateName.value)"  class="contact100-form-btn save-btn">
           <span>
             Guardar Asociado
           </span>
         </button>
 				</div>
 			</form>
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Injectable} from '@angular/core';
+import {ProductsService} from '../products.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -16,13 +17,15 @@ export class ProductImportComponent implements OnInit {
     fileToUpload: File = null;
     
     
-  constructor() { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
       
   }
     
-   
+   import(){
+       this.productsService.importProducts().subscribe((res) => alert(JSON.stringify(res["success"])));
+   }
     
 
 }

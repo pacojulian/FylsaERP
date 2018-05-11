@@ -56,6 +56,18 @@ router.get('/find',function(req,res){
 });
 
 
+router.get('/findAll',function(req,res){   
+      companySchema.find({})
+    .then(company  => {           
+              res.json(company);           
+                     
+        })
+          .catch(error => {
+         res.json({error:"Error"});
+         
+     })
+   
+});
 router.post('/update',function(req,res){
     //console.log(req.body._id);
     companySchema.findByIdAndUpdate(req.body._id,req.body,{new: true},

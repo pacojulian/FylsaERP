@@ -22,6 +22,9 @@ import { CompanyReadComponent } from './Company/company-read/company-read.compon
 import { CompanyDeleteComponent } from './Company/company-delete/company-delete.component';
 import { CompanyUpdateComponent } from './Company/company-update/company-update.component';
 import {CompanyService} from './Company/company.service';
+import {AssociatesService} from './Associates/associates.service';
+import {ProductsService} from './Productos/products.service';
+import {LoginService} from './login/login.service';
 
 
 @NgModule({
@@ -51,7 +54,10 @@ import {CompanyService} from './Company/company.service';
       ReactiveFormsModule
   ],
   providers: [
-      CompanyService
+      CompanyService,
+      AssociatesService,
+      ProductsService,
+      LoginService
   ],
   bootstrap: [AppComponent]
 })

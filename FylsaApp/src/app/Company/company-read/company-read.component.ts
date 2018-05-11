@@ -33,3 +33,4 @@ export class CompanyReadComponent implements OnInit {
        }
     }
 }
+

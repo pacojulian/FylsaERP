@@ -19,7 +19,7 @@ var userSchema = require('../Model/UserSchema');
 router.post('/login',function(req,res){
     var user = req.body.user;
     var pass = req.body.password;
-     userSchema.findOne({_id:user,PASSWORD:pass})
+     userSchema.findOne({EMAIL:user,PASSWORD:pass})
     .select('-_id')
     .then(user  => {           
               res.json(user);           
