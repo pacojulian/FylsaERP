@@ -42,5 +42,6 @@ export class LoginComponent implements OnInit {
               alert("Usuario No Encontrado");
           });
         
+        
     }
 }
