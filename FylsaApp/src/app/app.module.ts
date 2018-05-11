@@ -23,6 +23,7 @@ import { CompanyUpdateComponent } from './Company/company-update/company-update.
 import {CompanyService} from './Company/company.service';
 import {AssociatesService} from './Associates/associates.service';
 import {ProductsService} from './Productos/products.service';
+import {LoginService} from './login/login.service';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import {ProductsService} from './Productos/products.service';
   providers: [
       CompanyService,
       AssociatesService,
-      ProductsService
+      ProductsService,
+      LoginService
   ],
   bootstrap: [AppComponent]
 })
