@@ -5,22 +5,22 @@
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Id de la Compañía (Requerido)</span>
-					<input [(ngModel)]= "company._id" class="input100" type="text" name="name" value="{{company._id}}" >
+					<input [(ngModel)]= "company._id" class="input100" type="text" name="name" value="{{company._id}}" required >
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Nombre</span>
-					<input #companyName class="input100" type="text" name="name" placeholder="Nombre de la Compañía" value="{{company.NAME}}">
+					<input #companyName class="input100" type="text" name="name" placeholder="Nombre de la Compañía" value="{{company.NAME}}" required>
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Dirección</span>
-					<input #companyDirection class="input100" type="text" name="name" placeholder="Dirección de la Compañía" value="{{company.DIRECTION}}">
+					<input #companyDirection class="input100" type="text" name="name" placeholder="Dirección de la Compañía" value="{{company.DIRECTION}}" required>
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">RFC</span>
-					<input #companyRfc class="input100" type="text" name="name" placeholder="RFC de la Compañía" value="{{company.RFC}}">
+					<input #companyRfc class="input100" type="text" name="name" placeholder="RFC de la Compañía" value="{{company.RFC}}" required>
 					<span class="focus-input100"></span>
 				</div>
 				<div class="container-contact100-form-btn">
@@ -36,4 +36,3 @@
           </button>
 				</div>
 			</form>
-

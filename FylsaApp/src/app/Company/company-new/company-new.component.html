@@ -1,27 +1,27 @@
 
-<form class="contact100-form validate-form" (ngSubmit)="createCompany()">
+<form class="contact100-form" [formGroup]="newForm" (ngSubmit)="createCompany()">
 				<span class="contact100-form-title">
 					Añadir Compañía
 				</span>
 
-				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
+				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Id is required">
 					<span class="label-input100">Id de la Compañía</span>
-					<input  [(ngModel)]= "company._id" class="input100" type="text" name="name" placeholder="Id de la Compañía">
+					<input  [(ngModel)]= "company._id" class="form-control input100" type="text" name="name" placeholder="Id de la Compañía" formControlName="inputId" required>
 					<span class="focus-input100"></span>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Nombre</span>
-					<input [(ngModel)]= "company.NAME" class="input100" type="text" name="name" placeholder="Nombre de la Compañía">
+					<input [(ngModel)]= "company.NAME" class="form-control input100" type="text" name="name" placeholder="Nombre de la Compañía" formControlName="inputName" required>
 					<span class="focus-input100"></span>
 				</div>
-        <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
+        <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Address is required">
 					<span class="label-input100">Dirección</span>
-					<input [(ngModel)]= "company.DIRECTION" class="input100" type="text" name="name" placeholder="Dirección de la Compañía">
+					<input [(ngModel)]= "company.DIRECTION" class="form-control input100" type="text" name="name" placeholder="Dirección de la Compañía" formControlName="inputDir" required>
 					<span class="focus-input100"></span>
 				</div>
-        <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
+        <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="RFC is required">
 					<span class="label-input100">RFC</span>
-					<input [(ngModel)]= "company.RFC" class="input100" type="text" name="name" placeholder="RFC de la Compañía">
+					<input [(ngModel)]= "company.RFC" class="form-control input100" type="text" name="name" placeholder="RFC de la Compañía" formControlName="inputRFC" required>
 					<span class="focus-input100"></span>
 				</div>
 				<div class="container-contact100-form-btn">
@@ -31,5 +31,5 @@
 						</span>
 					</button>
 				</div>
-    
+
 			</form>

@@ -1,11 +1,6 @@
-
-
 <span class="contact100-form-title">
   Nueva Cotización
 </span>
-<script type="text/javascript">
-  alert("hola");
-</script>
 <div class="container">
 <div class="stepwizard">
     <div class="stepwizard-row setup-panel">
@@ -19,10 +14,11 @@
         </div>
         <div class="stepwizard-step">
             <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-            <p>Pado 3</p>
+            <p>Paso 3</p>
         </div>
     </div>
 </div>
+<!-- <button  type="button" (click)="downloadPDF()">PDF</button> -->
 <form role="form">
     <div class="row setup-content" id="step-1">
         <div class="col-xs-12">
@@ -38,6 +34,7 @@
                 </div>
 
                 <p>(*) Obligatorio</p>
+
                 <button class="btn btn-primary nextBtn btn-lg pull-right contact100-form-btn" type="button">Siguiente</button>
             </div>
         </div>
@@ -67,11 +64,80 @@
         <div class="col-xs-12">
             <div class="col-md-12">
                 <h3> Paso 3</h3>
-                <div class="form-group">
+                <div class="form-group search-container">
                   <input type="text" class="form-control search-bar" placeholder="Buscar">
                   <button type="submit" class="btn btn-default search-btn"><img [src]="'assets/icons/search.svg'" class="small-image-icon" alt="buscar image">Buscar</button>
                 </div>
+                <div class="container-table100">
+                  <div class="wrap-table100">
+                      <div class="table">
 
+                        <div class="table-row header">
+                          <div class="cell">
+                            Descripción
+                          </div>
+                          <div class="cell">
+                            Unidad de medida
+                          </div>
+                        </div>
+                          <div class="table-row">
+                            <div class="cell">
+                              Vincent Williamson
+                            </div>
+                            <div class="cell">
+                              31
+                            </div>
+                          </div>
+
+                          <div class="table-row">
+                            <div class="cell">
+                              Joseph Smith
+                            </div>
+                            <div class="cell">
+                              27
+                            </div>
+                          </div>
+
+                          <div class="table-row">
+                            <div class="cell">
+                              Justin Black
+                            </div>
+                            <div class="cell">
+                              26
+                            </div>
+                          </div>
+
+                          <div class="table-row">
+                            <div class="cell">
+                              Sean Guzman
+                            </div>
+                            <div class="cell">
+                              25
+                            </div>
+                          </div>
+
+                          <div class="table-row">
+                            <div class="cell" data-title="Full Name">
+                              Keith Carter
+                            </div>
+                            <div class="cell" data-title="Age">
+                              20
+                            </div>
+                          </div>
+
+                          <div class="table-row">
+                            <div class="cell" data-title="Full Name">
+                              Austin Medina
+                            </div>
+                            <div class="cell" data-title="Age">
+                              32
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                  <button class="btn btn-default prev-btn" disabled="true">Anterior página</button>   <button class="btn btn-default next-btn">Siguiente página</button>
+                <!-- TABLA COTIZATION -->
                   <div class="container-table100">
                     <div class="wrap-table100">
                         <div class="table">
@@ -81,73 +147,89 @@
                               Descripción
                             </div>
                             <div class="cell">
-                              Precio item
+                              No. de items
                             </div>
                             <div class="cell">
-                              Precio mano de obra
+                              Unidad de Medida
                             </div>
                             <div class="cell">
-                              Unidad del producto
+                              Tipo de Servicio
                             </div>
                           </div>
 
                           <div class="table-row">
-                            <div class="cell" data-title="Descripcion">
+                            <div class="cell">
                               Vincent Williamson
                             </div>
-                            <div class="cell" data-title="Precio item">
+                            <div class="cell">
                               31
                             </div>
-                            <div class="cell" data-title="Precio mano de obra">
+                            <div class="cell">
                               31
                             </div>
-                            <div class="cell" data-title="Unidad del producto">
-                              Washington
+                            <div class="cell">
+                              <select class="form-control">
+                                  <option>Suministro</option>
+                                  <option>Instalación</option>
+                                  <option>Ambos</option>
+                                </select>
                             </div>
                           </div>
 
                           <div class="table-row">
-                            <div class="cell" data-title="Full Name">
+                            <div class="cell">
                               Joseph Smith
                             </div>
-                            <div class="cell" data-title="Age">
+                            <div class="cell">
                               27
                             </div>
-                            <div class="cell" data-title="Job Title">
+                            <div class="cell">
                             45
                             </div>
-                            <div class="cell" data-title="Location">
-                              Somerville, MA
+                            <div class="cell">
+                              <select class="form-control">
+                                  <option>Suministro</option>
+                                  <option>Instalación</option>
+                                  <option>Ambos</option>
+                                </select>
                             </div>
                           </div>
 
                           <div class="table-row">
-                            <div class="cell" data-title="Full Name">
+                            <div class="cell">
                               Justin Black
                             </div>
-                            <div class="cell" data-title="Age">
+                            <div class="cell">
                               26
                             </div>
-                            <div class="cell" data-title="Job Title">
+                            <div class="cell">
                               75
                             </div>
-                            <div class="cell" data-title="Location">
-                              Los Angeles
+                            <div class="cell">
+                              <select class="form-control">
+                                  <option>Suministro</option>
+                                  <option>Instalación</option>
+                                  <option>Ambos</option>
+                                </select>
                             </div>
                           </div>
 
                           <div class="table-row">
-                            <div class="cell" data-title="Full Name">
+                            <div class="cell">
                               Sean Guzman
                             </div>
-                            <div class="cell" data-title="Age">
+                            <div class="cell">
                               25
                             </div>
-                            <div class="cell" data-title="Job Title">
+                            <div class="cell">
                               35
                             </div>
-                            <div class="cell" data-title="Location">
-                              San Francisco
+                            <div class="cell">
+                              <select class="form-control">
+                                  <option>Suministro</option>
+                                  <option>Instalación</option>
+                                  <option>Ambos</option>
+                                </select>
                             </div>
                           </div>
 
@@ -162,7 +244,11 @@
                             78
                             </div>
                             <div class="cell" data-title="Location">
-                              New York, NY
+                              <select class="form-control">
+                                  <option>Suministro</option>
+                                  <option>Instalación</option>
+                                  <option>Ambos</option>
+                                </select>
                             </div>
                           </div>
 
@@ -177,7 +263,11 @@
                             75
                             </div>
                             <div class="cell" data-title="Location">
-                              New York
+                              <select class="form-control">
+                                  <option>Suministro</option>
+                                  <option>Instalación</option>
+                                  <option>Ambos</option>
+                                </select>
                             </div>
                           </div>
 
@@ -191,3 +281,134 @@
     </div>
 </form>
 </div>
+
+<!-- <div class="is-hidden">
+    <div id="HTMLtoPDF">
+      <div class="my-header">
+        <div class="header-data">
+          FYLSA CONTROL Y AUTOMATIZACION
+          <p>FRANCISCO JULIAN BOLAÑOS
+          <p>R.F.C:JUBF-650904-AY1
+            <p><p><p><p><p><p><p><p><p><p><p><p>
+        </div>
+      </div>
+      <div class="my-body">
+      <div class="date-style">
+        21/2/2017
+        <p>30
+      </div>
+      <div class="company">
+        <h1 class="my-h1">PATO</h1>
+        <h1 class="my-h1">PATO</h1>
+      </div>
+      <div class="inicio">
+        ESTIMADO PATO EN ATENCION POR SU AMABLE SOLICITUD ME PERMITO ENTREGAR A USTED LA SIGUIENTE COTIZACION
+      </div>
+      <h2 class="my-h2">SUMINISTRO DE MATERIAL</h2>
+      <div class="container-table100">
+          <div class="table100 ver1">
+            <div class="table100-firstcol">
+              <table class="my-table">
+                <thead>
+                  <tr class="row100 head">
+                    <th class="my-th cell100 column1">Descripción</th>
+                    <th class="my-th cell100 column2">U/M</th>
+                    <th class="my-th cell100 column3">Cantidad</th>
+                    <th class="my-th cell100 column4">Precio Unitario</th>
+                    <th class="my-th cell100 column5">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
+                    <td class="my-td cell100 column2">PZ</td>
+                    <td class="my-td cell100 column3">2</td>
+                    <td class="my-td cell100 column4">242.11</td>
+                    <td class="my-td cell100 column5">584.22</td>
+                  </tr>
+
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA REPARACION DE VIDEO PROYECTOR</td>
+                    <td class="my-td cell100 column2">SV</td>
+                    <td class="my-td cell100 column3">1</td>
+                    <td class="my-td cell100 column4">720</td>
+                    <td class="my-td cell100 column5">30720.0</td>
+                  </tr>
+
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
+                    <td class="my-td cell100 column2">PZ</td>
+                    <td class="my-td cell100 column3">2</td>
+                    <td class="my-td cell100 column4">242.11</td>
+                    <td class="my-td cell100 column5">584.22</td>
+                  </tr>
+
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
+                    <td class="my-td cell100 column2">PZ</td>
+                    <td class="my-td cell100 column3">2</td>
+                    <td class="my-td cell100 column4">242.11</td>
+                    <td class="my-td cell100 column5">584.22</td>
+                  </tr>
+
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
+                    <td class="my-td cell100 column2">PZ</td>
+                    <td class="my-td cell100 column3">2</td>
+                    <td class="my-td cell100 column4">242.11</td>
+                    <td class="my-td cell100 column5">584.22</td>
+                  </tr>
+
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
+                    <td class="my-td cell100 column2">PZ</td>
+                    <td class="my-td cell100 column3">2</td>
+                    <td class="my-td cell100 column4">242.11</td>
+                    <td class="my-td cell100 column5">584.22</td>
+                  </tr>
+
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
+                    <td class="my-td cell100 column2">PZ</td>
+                    <td class="my-td cell100 column3">2</td>
+                    <td class="my-td cell100 column4">242.11</td>
+                    <td class="my-td cell100 column5">584.22</td>
+                  </tr>
+
+                  <tr class="row100 body">
+                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
+                    <td class="my-td cell100 column2">PZ</td>
+                    <td class="my-td cell100 column3">2</td>
+                    <td class="my-td cell100 column4">242.11</td>
+                    <td class="my-td cell100 column5">584.22</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+      <div>
+      <h3 class="my-h3">COSTO DEL PROYECTO: 31304.22</h3>
+      <div class="final">
+        <p>LOS PRECIOS SON EN PESOS Y ES MAS 16% DE IVA
+        <p>TIEMPO DE ENTREGA: PATO
+        <p>CONDICIONES DE PAGO: PATO
+      </div>
+      <div class="final-2">
+        CABE ACLARAR QUE ESTA COTIZACION SOLO TIENE VIGENCIA DE 20 DIAS SALUDOS
+        CORDIALES, PARA CUALQUIER DUDA O ACLARACION, QUEDO DE USTED
+      </div>
+      <div class="firma">
+        <p>ATENTAMENTE
+        <p>--------------------------------
+        <p>DIANA RUIZ
+      </div>
+
+    </div>
+  </div>
+    <footer class="my-footer">
+        <p><div class="foot-pt1">IZCALLI CUAUHTEMOC V HIGO 38-BMETEPEC     EDO.DE MEXICO   CP-52176</div>
+        <p><div class="foot-pt1">TEL.:01(722)2-16-62-04    E-MAIL: fylsaservicios@gmail.com</div>
+    </footer>
+  </div>
+</div> -->

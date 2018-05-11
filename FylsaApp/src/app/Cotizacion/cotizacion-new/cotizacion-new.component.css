@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css?family=Roboto";
 
 .contact100-form-title {
   display: block;
@@ -120,6 +121,11 @@ body{
   line-height: 1.2;
 }
 
+.search-container {
+  margin-top: 2em;
+  margin-left: 2.25em;
+}
+
 .search-bar {
   width: 50%;
   height: auto;
@@ -138,6 +144,14 @@ body{
   width: 1em;
   margin-right: 10px;
 }
+
+.prev-btn {
+  margin-left: 30%;
+}
+
+.next-btn {
+  margin-left: 10%;
+}
 /* TABLA PRODUCTOS*/
 
 /*//////////////////////////////////////////////////////////////////
@@ -154,7 +168,7 @@ body{
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 33px 30px;
+  padding: 25px 30px;
 }
 
 .wrap-table100 {
@@ -172,6 +186,7 @@ body{
 .table, .table-row, .cell {
   font-family: 'Poppins', sans-serif;
 }
+
 
 @media screen and (max-width: 768px) {
   .table {
@@ -196,6 +211,8 @@ body{
   }
 
   .table-row.header {
+    cursor: not-allowed;
+    pointer-events: none;
     padding: 0;
     height: 0px;
   }
@@ -311,4 +328,203 @@ body{
   .table, .table-row, .cell {
     width: 100% !important;
   }
+}
+
+
+////////////////FOR PDF/////////////////
+
+.is-hidden {
+  visibility: collapse;
+}
+#HTMLtoPDF {
+  font-family: "Roboto", sans-serif;
+}
+
+.my-header {
+  width: 50%;
+  margin-top: 40px;
+  padding-bottom: 10px;
+  border-bottom: 4px solid black;
+  height: 160px;
+  margin-bottom: 15px;
+}
+
+.my-body {
+  margin-top: 80px;
+}
+.my-h1 {
+  font-weight: bold;
+}
+
+.my-h2, .my-h3, .firma {
+  text-align: center;
+}
+
+.image-logo {
+  background-image: url(../../images/fylsa.jpg);
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 25px;
+}
+
+.header-data {
+  background-image: url(../../images/fylsa.jpg);
+  text-align: right;
+  display: inline-block;
+  right: 0px;
+  padding: 10px;
+  width: 50%;
+  height: 140px;
+  margin-left: 10px;
+}
+
+.date-style {
+  position: absolute;
+  right: 0px;
+  padding: 10px;
+  margin-right: 70%;
+}
+
+.company {
+  margin-top: 30px;
+  margin-left: 15px;
+  padding-top: 15px;
+}
+
+.inicio, .final, .final-2 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.final, .firma, .head {
+  font-weight: bold;
+}
+
+.my-footer {
+  width: 700px;
+  padding-bottom: 35px;
+}
+.foot-pt1 {
+  text-align: center;
+}
+/////TABLE/////
+
+.container-table100 {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 33px 100px;
+}
+
+.wrap-table100 {
+  width: 100%;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+.table100 {
+  background-color: #fff;
+}
+
+.my-table {
+  width: 100%;
+}
+
+.my-th, .my-td {
+  font-weight: unset;
+  padding-right: 10px;
+}
+
+.column1 {
+  padding-left: 40px;
+}
+
+.table100 th {
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+
+.table100 td {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+
+/*==================================================================
+[ Fix col ]*/
+.table100 {
+  width: 100%;
+}
+
+.table100-firstcol {
+  background-color: #fff;
+  width: 90%;
+  top: 0;
+  left: 0;
+}
+
+.table100-firstcol table {
+  background-color: #fff;
+}
+
+.wrap-table100-nextcols {
+  width: 100%;
+  overflow: auto;
+  padding-left: 310px;
+  padding-bottom: 28px;
+}
+
+.table100-nextcols table{
+  table-layout: fixed;
+}
+
+.shadow-table100-firstcol {
+  box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  -o-box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.05);
+  -ms-box-shadow: 8px 0px 10px 0px rgba(0, 0, 0, 0.05);
+}
+
+.table100-firstcol table {
+  background-color: transparent;
+}
+
+/*==================================================================
+[ Ver1 ]*/
+
+.table100.ver1 th {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #333333;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.table100.ver1 td {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.table100.ver1 .table100-firstcol td {
+  color: #666666;
+}
+
+.table100.ver1 .table100-nextcols td {
+  color: #999999;
+}
+
+
+.table100.ver1 tr {
+  border-bottom: 1px solid #f2f2f2;
 }

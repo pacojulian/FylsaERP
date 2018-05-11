@@ -57,4 +57,8 @@ export class CotizacionNewComponent implements OnInit {
 
   }
 
+  public downloadPDF() {
+    return xepOnline.Formatter.Format('HTMLtoPDF', {render: 'download', pageWidth:'216mm', pageHeight:'279mm'});
+  }
+
 }

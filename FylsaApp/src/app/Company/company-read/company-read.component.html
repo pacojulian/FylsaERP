@@ -1,21 +1,24 @@
-<form class="contact100-form validate-form" (ngSubmit)="getCompany()">
+<form name="readForm" class="contact100-form" [formGroup]="readForm" (ngSubmit)="getCompany()">
 				<span class="contact100-form-title">
 					Lista de Compañías
 				</span>
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Id de la Compañía</span>
-					<input [(ngModel)]= "company._id" class="input100" type="text" name="name"   >
+					<input [(ngModel)]= "company._id" class="form-control input100" type="text" formControlName="inputId" required>
 					<span class="focus-input100"></span>
+					<!-- error block -->
+					<!-- <div *ngIf="inputId.invalid && (inputId.dirty || inputId.touched)"
+					     class="alert alert-danger">
+					  <div *ngIf="inputId.errors.required">
+					    Name is required.
+					  </div>
+					</div>-->
 				</div>
 				<div class="container-contact100-form-btn">
-					<button type="submit" class="contact100-form-btn">
-						<span>
-							Buscar
-						</span>
-					</button>
+					<button type="submit" class="contact100-form-btn">Buscar</button>
 				</div>
-			</form>
+</form>
 
 <pre>{{company.NAME}}</pre>
 <pre>{{company.DIRECTION}}</pre>
