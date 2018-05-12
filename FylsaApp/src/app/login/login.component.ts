@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import{Router} from '@angular/router'
 import * as $ from 'jquery';
 import {UserLogin} from '../Models/userLogin';
-import {User} from '../../Models/user';
+import {User} from '../Models/user';
 import {LoginService} from './login.service';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 
     
      
-  constructor(private router:Router,private loginService:LoginService) {
+  constructor(private router:Router,private loginService:LoginService,private cookieService: CookieService) {
       this.user = new UserLogin("","");
   }
 
@@ -34,13 +34,12 @@ export class LoginComponent implements OnInit {
     loginUser(){
         this.user.user = this.userName;
         this.user.password = this.password;
-        //alert(this.userName + this.password);
-        //console.log(this.user)
-          this.loginService.findOne(this.user).subscribe((res) =>if(res!=null){
+          this.loginService.findOne(this.user).subscribe((res) =>{if(res!=null){ 
+            this.cookieService.set( 'User', res.NAME ),
               this.router.navigate(['Dashboard']);
           }else{
               alert("Usuario No Encontrado");
-          });
+          }});
         
         
     }

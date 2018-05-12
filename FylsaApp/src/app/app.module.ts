@@ -25,6 +25,8 @@ import {CompanyService} from './Company/company.service';
 import {AssociatesService} from './Associates/associates.service';
 import {ProductsService} from './Productos/products.service';
 import {LoginService} from './login/login.service';
+import { CookieService } from 'ngx-cookie-service';
+import{Ng2Webstorage} from 'ngx-webstorage';
 
 
 @NgModule({
@@ -51,9 +53,12 @@ import {LoginService} from './login/login.service';
       AlertModule.forRoot(),
       FormsModule,
       HttpClientModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      Ng2Webstorage
+      
   ],
   providers: [
+      CookieService,
       CompanyService,
       AssociatesService,
       ProductsService,
