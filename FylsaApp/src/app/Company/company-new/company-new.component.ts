@@ -11,18 +11,26 @@ import {Company} from '../../Models/company';
 export class CompanyNewComponent implements OnInit {
 
     newForm: FormGroup;
+    idCtrl: FormControl;
+    nameCtrl: FormControl;
+    dirCtrl: FormControl;
+    rfcCtrl: FormControl;
      public company: Company;
 
   constructor(private companyService:CompanyService, private fb:FormBuilder) {
       this.company = new Company("","","","");
+      this.idCtrl = new FormControl('', Validators.required);
+      this.nameCtrl = new FormControl('', Validators.required);
+      this.dirCtrl = new FormControl('', Validators.required);
+      this.rfcCtrl = new FormControl('', Validators.required);
    }
 
   ngOnInit() {
     this.newForm  = this.fb.group({
-      'inputId': new FormControl('', Validators.required),
-      'inputName': new FormControl('', Validators.required),
-      'inputDir': new FormControl('', Validators.required),
-      'inputRFC': new FormControl('', Validators.required)
+      'inputId': this.idCtrl,
+      'inputName': this.nameCtrl,
+      'inputDir': this.dirCtrl,
+      'inputRFC': this.rfcCtrl
     });
   }
 

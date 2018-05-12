@@ -6,23 +6,51 @@
 
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Id is required">
 					<span class="label-input100">Id de la Compañía</span>
-					<input  [(ngModel)]= "company._id" class="form-control input100" type="text" name="name" placeholder="Id de la Compañía" formControlName="inputId" required>
+					<input  [(ngModel)]= "company._id" class="form-control input100" type="text" name="name" formControlName="inputId" required>
 					<span class="focus-input100"></span>
+					<!-- error block -->
+					<div *ngIf="idCtrl.invalid && (idCtrl.dirty || idCtrl.touched)"
+							 class="alert alert-danger">
+						<div *ngIf="idCtrl.errors.required">
+							El Id es obligatorio
+						</div>
+					</div>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Nombre</span>
-					<input [(ngModel)]= "company.NAME" class="form-control input100" type="text" name="name" placeholder="Nombre de la Compañía" formControlName="inputName" required>
+					<input [(ngModel)]= "company.NAME" class="form-control input100" type="text" name="name" formControlName="inputName" required>
 					<span class="focus-input100"></span>
+					<!-- error block -->
+					<div *ngIf="nameCtrl.invalid && (nameCtrl.dirty || nameCtrl.touched)"
+							 class="alert alert-danger">
+						<div *ngIf="nameCtrl.errors.required">
+							El nombre es obligatorio
+						</div>
+					</div>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Address is required">
 					<span class="label-input100">Dirección</span>
-					<input [(ngModel)]= "company.DIRECTION" class="form-control input100" type="text" name="name" placeholder="Dirección de la Compañía" formControlName="inputDir" required>
+					<input [(ngModel)]= "company.DIRECTION" class="form-control input100" type="text" name="name" formControlName="inputDir" required>
 					<span class="focus-input100"></span>
+					<!-- error block -->
+					<div *ngIf="dirCtrl.invalid && (dirCtrl.dirty || dirCtrl.touched)"
+							 class="alert alert-danger">
+						<div *ngIf="dirCtrl.errors.required">
+							La dirección es obligatoria
+						</div>
+					</div>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="RFC is required">
 					<span class="label-input100">RFC</span>
-					<input [(ngModel)]= "company.RFC" class="form-control input100" type="text" name="name" placeholder="RFC de la Compañía" formControlName="inputRFC" required>
+					<input [(ngModel)]= "company.RFC" class="form-control input100" type="text" name="name" formControlName="inputRFC" required>
 					<span class="focus-input100"></span>
+					<!-- error block -->
+					<div *ngIf="rfcCtrl.invalid && (rfcCtrl.dirty || rfcCtrl.touched)"
+							 class="alert alert-danger">
+						<div *ngIf="rfcCtrl.errors.required">
+							El RFC es obligatorio
+						</div>
+					</div>
 				</div>
 				<div class="container-contact100-form-btn">
 					<button type="submit"  class="contact100-form-btn">
