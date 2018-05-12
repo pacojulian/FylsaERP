@@ -20,9 +20,10 @@ export class AssociatesNewComponent implements OnInit {
       
       
      this.associatesService.findAll().subscribe(res => {for(let i in res){
-           var obj = {} as this.companies;
-          obj.name =res[i].NAME;
-          this.companies.push(obj);}     
+          this.companies.push({
+              'name': res[i].NAME
+          });
+        }     
       }      
       );
    // this.getAssociates(); 

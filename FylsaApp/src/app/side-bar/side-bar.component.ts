@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{Router} from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,11 +8,15 @@ import{Router} from '@angular/router';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
+    sessionName:'Unknown';
 
   constructor(
-      private router:Router
+      private router:Router,
+      private cookieService: CookieService
   ) { }
   ngOnInit() {
+      this.sessionName=this.cookieService.get('User');
+     
   }
 
     /*
