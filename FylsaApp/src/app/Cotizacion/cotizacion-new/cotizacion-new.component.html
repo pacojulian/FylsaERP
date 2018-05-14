@@ -19,18 +19,18 @@
     </div>
 </div>
 <!-- <button  type="button" (click)="downloadPDF()">PDF</button> -->
-<form role="form">
+<form role="form" (ngSubmit)="createQuotation()">
     <div class="row setup-content" id="step-1">
         <div class="col-xs-12">
             <div class="col-md-12">
                 <h3> Paso 1</h3>
                 <div class="form-group">
                     <label class="control-label form-label">Nombre de la Empresa *</label>
-                    <input  maxlength="100" type="text" required="required" class="form-control form-input" placeholder="Nombre de la Empresa"  />
+                    <input  maxlength="100" [(ngModel)]= "quotation.COMPANY" name="id" type="text" required="required" class="form-control form-input" placeholder="Nombre de la Empresa"  />
                 </div>
                 <div class="form-group">
                     <label class="control-label form-label">A Quien va Dirigido *</label>
-                    <input maxlength="100" type="text" required="required" class="form-control form-input" placeholder="A Quien Va Dirigido" />
+                    <input maxlength="100"  [(ngModel)]= "quotation.ADDRESED" name="addressed" type="text" required="required" class="form-control form-input" placeholder="A Quien Va Dirigido" />
                 </div>
 
                 <p>(*) Obligatorio</p>
@@ -45,15 +45,15 @@
                 <h3> Paso 2</h3>
                 <div class="form-group">
                     <label class="control-label form-label">Descripcion *</label>
-                    <input maxlength="100" type="text" required="required" class="form-control form-input" placeholder="Descripcion" />
+                    <input maxlength="100" [(ngModel)]= "quotation.REASON" name="reason"  type="text" required="required" class="form-control form-input" placeholder="Descripcion" />
                 </div>
                 <div class="form-group">
                     <label class="control-label form-label">Tiempo de Entrega *</label>
-                    <input maxlength="100" type="text" required="required" class="form-control form-input" placeholder="Tiempo de Entrega" />
+                    <input maxlength="100" [(ngModel)]= "quotation.DELIVERY_TIME" name="delivery" type="text" required="required" class="form-control form-input" placeholder="Tiempo de Entrega" />
                 </div>
                 <div class="form-group">
                     <label class="control-label form-label">Condiciones de Pago *</label>
-                    <input maxlength="100" type="text" required="required" class="form-control form-input" placeholder="Condiciones de Pago" />
+                    <input maxlength="100" [(ngModel)]= "quotation.PAYMENT_CONDITIONS" name="payment" type="text" required="required" class="form-control form-input" placeholder="Condiciones de Pago" />
                 </div>
                 <p>(*) Obligatorio</p>
                 <button class="btn btn-primary nextBtn btn-lg pull-right contact100-form-btn" type="button" >Siguiente</button>
@@ -65,13 +65,12 @@
             <div class="col-md-12">
                 <h3> Paso 3</h3>
                 <div class="form-group search-container">
-                  <input type="text" class="form-control search-bar" placeholder="Buscar">
-                  <button type="submit" class="btn btn-default search-btn"><img [src]="'assets/icons/search.svg'" class="small-image-icon" alt="buscar image">Buscar</button>
+                  <input type="text" class="form-control search-bar" [(ngModel)]="searchBy" name="search"  placeholder="Buscar">
+                  <button type="button" (click)="getItems()" class="btn btn-default search-btn"><img [src]="'assets/icons/search.svg'" class="small-image-icon" alt="buscar image">Buscar</button>
                 </div>
                 <div class="container-table100">
-                  <div class="wrap-table100">
+                  <div class="wrap-table100 the-overflow">
                       <div class="table">
-
                         <div class="table-row header">
                           <div class="cell">
                             Descripción
@@ -80,66 +79,64 @@
                             Unidad de medida
                           </div>
                         </div>
-                          <div class="table-row">
-                            <div class="cell">
-                              Vincent Williamson
-                            </div>
-                            <div class="cell">
-                              31
-                            </div>
-                          </div>
 
-                          <div class="table-row">
-                            <div class="cell">
-                              Joseph Smith
-                            </div>
-                            <div class="cell">
-                              27
-                            </div>
+                        <div class="table-row" (click)="addToQuotation(i)" *ngFor="let item of inventoryList; let i = index" >
+                          <div class="cell">
+                            {{item.DESCRIPTION}}
                           </div>
-
-                          <div class="table-row">
-                            <div class="cell">
-                              Justin Black
-                            </div>
-                            <div class="cell">
-                              26
-                            </div>
+                          <div class="cell">
+                            {{item.UNITY_MESURE}}
                           </div>
-
-                          <div class="table-row">
-                            <div class="cell">
-                              Sean Guzman
-                            </div>
-                            <div class="cell">
-                              25
-                            </div>
-                          </div>
-
-                          <div class="table-row">
-                            <div class="cell" data-title="Full Name">
-                              Keith Carter
-                            </div>
-                            <div class="cell" data-title="Age">
-                              20
-                            </div>
-                          </div>
-
-                          <div class="table-row">
-                            <div class="cell" data-title="Full Name">
-                              Austin Medina
-                            </div>
-                            <div class="cell" data-title="Age">
-                              32
-                            </div>
-                          </div>
+                        </div>
                       </div>
                   </div>
                 </div>
-                  <button class="btn btn-default prev-btn" disabled="true">Anterior página</button>   <button class="btn btn-default next-btn">Siguiente página</button>
-                <!-- TABLA COTIZATION -->
+                  <!-- <button class="btn btn-default prev-btn" disabled="true">Anterior página</button>   <button class="btn btn-default next-btn">Siguiente página</button> -->
+                  <!--TABLA PARA AÑADIR OTRO ITEM-->
                   <div class="container-table100">
                     <div class="wrap-table100">
+                        <div class="table">
+                          <div class="table-row header">
+                            <div class="cell">
+                              Descripción
+                            </div>
+                            <div class="cell">
+                              Unidad de Medida
+                            </div>
+                            <div class="cell">
+                              Precio
+                            </div>
+                            <div class="cell">
+                              Precio mano de obra
+                            </div>
+                            <div class="cell">
+                              Añadir otro item
+                            </div>
+                          </div>
+
+                          <div class="table-row">
+                            <div class="cell">
+                              <input type="text" [(ngModel)]= "otherInventoryItem.DESCRIPTION" name="otherDesc" class="form-control desc-input" placeholder="Codo">
+                            </div>
+                            <div class="cell">
+                              <input type="text" [(ngModel)]= "otherInventoryItem.UNITY_MESURE" name="otherUnit" class="form-control unit-input" placeholder="Metros">
+                            </div>
+                            <div class="cell">
+                              <input type="number" [(ngModel)]= "otherInventoryItem.PRICE" name="otherPrice" class="form-control unit-input" placeholder="30">
+                            </div>
+                            <div class="cell">
+                              <input type="number" [(ngModel)]= "otherInventoryItem.LABOR_PRICE" name="otherHandPrice" class="form-control unit-input" placeholder="30">
+                            </div>
+                            <div class="cell">
+                               <button type="button" (click)="addToInventoryList()" class="btn btn-default"><img [src]="'assets/icons/add.svg'" class="small-image-icon change-color-black" alt="anadir image">Añadir</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                <!-- TABLA COTIZATION -->
+                  <div class="container-table100">
+                    <div class="wrap-table100  the-overflow">
                         <div class="table">
 
                           <div class="table-row header">
@@ -147,7 +144,7 @@
                               Descripción
                             </div>
                             <div class="cell">
-                              No. de items
+                              Cantidad
                             </div>
                             <div class="cell">
                               Unidad de Medida
@@ -155,126 +152,48 @@
                             <div class="cell">
                               Tipo de Servicio
                             </div>
-                          </div>
-
-                          <div class="table-row">
                             <div class="cell">
-                              Vincent Williamson
+                              Subtotal
                             </div>
                             <div class="cell">
-                              31
-                            </div>
-                            <div class="cell">
-                              31
-                            </div>
-                            <div class="cell">
-                              <select class="form-control">
-                                  <option>Suministro</option>
-                                  <option>Instalación</option>
-                                  <option>Ambos</option>
-                                </select>
+                              Guardar
                             </div>
                           </div>
 
-                          <div class="table-row">
+                          <div class="table-row" *ngFor="let qItem of csList; let j = index">
                             <div class="cell">
-                              Joseph Smith
+                              {{qItem.DESCRIPTION}}
+                            </div>
+                            <div class="cell" >
+                              <input type="number" [(ngModel)]="quantity[j]" name="cantidad" class="form-control quantity-input" placeholder="1" value={{qItem.CANTITY}}>
                             </div>
                             <div class="cell">
-                              27
+                              {{qItem.MEASURE_UNIT}}
                             </div>
                             <div class="cell">
-                            45
-                            </div>
-                            <div class="cell">
-                              <select class="form-control">
+                              <select class="form-control select-type" [(ngModel)]="typeService[j]" name="tipo">
+                                  <!-- <option value="" selected disabled hidden>{{qItem.PROVIDE}}</option> -->
                                   <option>Suministro</option>
-                                  <option>Instalación</option>
-                                  <option>Ambos</option>
+                                  <option>Instalacion</option>
+                                  <option>Suministro e Instalacion</option>
                                 </select>
+                            </div>
+                            <div class="cell">
+                              {{qItem.SALE_PRICE}}
+                            </div>
+                            <div class="cell">
+                               <button type="button" (click)="saveChanges(j)" class="btn btn-default delete-btn"><img [src]="'assets/icons/save.svg'" class="small-image-icon" alt="save image"></button>
                             </div>
                           </div>
 
-                          <div class="table-row">
-                            <div class="cell">
-                              Justin Black
-                            </div>
-                            <div class="cell">
-                              26
-                            </div>
-                            <div class="cell">
-                              75
-                            </div>
-                            <div class="cell">
-                              <select class="form-control">
-                                  <option>Suministro</option>
-                                  <option>Instalación</option>
-                                  <option>Ambos</option>
-                                </select>
-                            </div>
-                          </div>
 
-                          <div class="table-row">
-                            <div class="cell">
-                              Sean Guzman
-                            </div>
-                            <div class="cell">
-                              25
-                            </div>
-                            <div class="cell">
-                              35
-                            </div>
-                            <div class="cell">
-                              <select class="form-control">
-                                  <option>Suministro</option>
-                                  <option>Instalación</option>
-                                  <option>Ambos</option>
-                                </select>
-                            </div>
-                          </div>
 
-                          <div class="table-row">
-                            <div class="cell" data-title="Full Name">
-                              Keith Carter
-                            </div>
-                            <div class="cell" data-title="Age">
-                              20
-                            </div>
-                            <div class="cell" data-title="Job Title">
-                            78
-                            </div>
-                            <div class="cell" data-title="Location">
-                              <select class="form-control">
-                                  <option>Suministro</option>
-                                  <option>Instalación</option>
-                                  <option>Ambos</option>
-                                </select>
-                            </div>
-                          </div>
 
-                          <div class="table-row">
-                            <div class="cell" data-title="Full Name">
-                              Austin Medina
-                            </div>
-                            <div class="cell" data-title="Age">
-                              32
-                            </div>
-                            <div class="cell" data-title="Job Title">
-                            75
-                            </div>
-                            <div class="cell" data-title="Location">
-                              <select class="form-control">
-                                  <option>Suministro</option>
-                                  <option>Instalación</option>
-                                  <option>Ambos</option>
-                                </select>
-                            </div>
-                          </div>
 
                         </div>
                     </div>
                   </div>
-                    <h4> Total en pesos: 10000</h4>
+                    <h3> Total en pesos: {{total}}</h3>
                 <button class="btn btn-success btn-lg pull-right contact100-form-btn-submit" type="submit">Cotizar</button>
             </div>
         </div>
@@ -282,7 +201,7 @@
 </form>
 </div>
 
-<!-- <div class="is-hidden">
+<div class="is-hidden">
     <div id="HTMLtoPDF">
       <div class="my-header">
         <div class="header-data">
@@ -358,30 +277,6 @@
                     <td class="my-td cell100 column4">242.11</td>
                     <td class="my-td cell100 column5">584.22</td>
                   </tr>
-
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
-                    <td class="my-td cell100 column2">PZ</td>
-                    <td class="my-td cell100 column3">2</td>
-                    <td class="my-td cell100 column4">242.11</td>
-                    <td class="my-td cell100 column5">584.22</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
-                    <td class="my-td cell100 column2">PZ</td>
-                    <td class="my-td cell100 column3">2</td>
-                    <td class="my-td cell100 column4">242.11</td>
-                    <td class="my-td cell100 column5">584.22</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
-                    <td class="my-td cell100 column2">PZ</td>
-                    <td class="my-td cell100 column3">2</td>
-                    <td class="my-td cell100 column4">242.11</td>
-                    <td class="my-td cell100 column5">584.22</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -411,4 +306,4 @@
         <p><div class="foot-pt1">TEL.:01(722)2-16-62-04    E-MAIL: fylsaservicios@gmail.com</div>
     </footer>
   </div>
-</div> -->
+</div>

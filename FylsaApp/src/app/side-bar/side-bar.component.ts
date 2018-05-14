@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./side-bar.component.css']
 })
 export class SideBarComponent implements OnInit {
-    sessionName:'Unknown';
+    sessionName:string;
 
   constructor(
       private router:Router,
@@ -16,7 +16,6 @@ export class SideBarComponent implements OnInit {
   ) { }
   ngOnInit() {
       this.sessionName=this.cookieService.get('User');
-     
   }
 
     /*

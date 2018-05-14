@@ -145,12 +145,25 @@ body{
   margin-right: 10px;
 }
 
+.change-color-black {
+  filter: invert(1);
+}
+
+.change-color-red {
+  filter: invert(.5) sepia(1) saturate(10) hue-rotate(315deg);
+
+}
+
 .prev-btn {
-  margin-left: 30%;
+  margin-left: 32%;
 }
 
 .next-btn {
   margin-left: 10%;
+}
+
+.delete-btn {
+  width: 2.75em;
 }
 /* TABLA PRODUCTOS*/
 
@@ -158,7 +171,7 @@ body{
 [ Table ]*/
 .container-table100 {
   width: 100%;
-  min-height: 50vh;
+  min-height: 30vh;
   font-family: 'Poppins', sans-serif;
   display: -webkit-box;
   display: -webkit-flex;
@@ -175,6 +188,11 @@ body{
   width: 100%;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.the-overflow {
+  height: 500px;
+  overflow-y: scroll;
 }
 
 .table {
@@ -203,6 +221,8 @@ body{
 .table-row.header {
   color: #ffffff;
   background: #6c7ae0;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -241,6 +261,21 @@ body{
   display: table-cell;
 }
 
+.desc-input {
+  width: 250px;
+}
+
+.quantity-input {
+   width: 60px;
+}
+
+.unit-input {
+  width: 100px;
+}
+
+.select-type {
+  width: 200px;
+}
 @media screen and (max-width: 768px) {
   .cell {
     display: block;
@@ -271,23 +306,29 @@ body{
 }
 
 .table-row .cell:nth-child(1) {
-  width: 360px;
+  width: 310px;
   padding-left: 40px;
 }
 
 .table-row .cell:nth-child(2) {
-  width: 160px;
+  width: 120px;
 }
 
 .table-row .cell:nth-child(3) {
-  width: 250px;
+  width: 180px;
 }
 
 .table-row .cell:nth-child(4) {
-  width: 190px;
+  width: 210px;
 }
 
+.table-row .cell:nth-child(5) {
+  width: 90px;
+}
 
+.table-row .cell:nth-child(6) {
+  width: 50px;
+}
 
 .table, .table-row {
   width: 100% !important;
@@ -334,10 +375,10 @@ body{
 ////////////////FOR PDF/////////////////
 
 .is-hidden {
-  visibility: collapse;
 }
 #HTMLtoPDF {
   font-family: "Roboto", sans-serif;
+  visibility: collapse;
 }
 
 .my-header {

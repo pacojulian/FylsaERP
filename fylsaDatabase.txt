@@ -67,6 +67,7 @@ db.getCollection('INVENTORY').insert({
     _id: "codocondulet",
     DESCRIPTION: "codo condulet",
     PRICE: 200,
+LABOR_PRICE:500,
     UNITY_MEASURE: "PZA"
     })
     

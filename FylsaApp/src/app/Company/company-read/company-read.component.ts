@@ -26,10 +26,10 @@ export class CompanyReadComponent implements OnInit {
 
   }
     getCompany(){
-      if(this.readForm.valid) {
+      // if(this.readForm.valid) {
          this.companyService.findCompany(this.company._id).subscribe((res: any) =>{
              this.company = res;
          });
-       }
+       // }
     }
 }

@@ -22,6 +22,7 @@ import { CompanyReadComponent } from './Company/company-read/company-read.compon
 import { CompanyDeleteComponent } from './Company/company-delete/company-delete.component';
 import { CompanyUpdateComponent } from './Company/company-update/company-update.component';
 import {CompanyService} from './Company/company.service';
+import {CotizacionService} from './Cotizacion/cotizacion.service';
 import {AssociatesService} from './Associates/associates.service';
 import {ProductsService} from './Productos/products.service';
 import {LoginService} from './login/login.service';
@@ -55,11 +56,12 @@ import{Ng2Webstorage} from 'ngx-webstorage';
       HttpClientModule,
       ReactiveFormsModule,
       Ng2Webstorage
-      
+
   ],
   providers: [
       CookieService,
       CompanyService,
+      CotizacionService,
       AssociatesService,
       ProductsService,
       LoginService
