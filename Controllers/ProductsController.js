@@ -30,7 +30,7 @@ router.get('/find',function(req,res){
     .select('-_id')
     .then(products  => {                
               res.json(products);  
-          console.log(products);       
+          //console.log(products);       
         })
           .catch(error => {
          res.json({error:"Error"});

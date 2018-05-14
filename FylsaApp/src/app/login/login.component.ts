@@ -50,22 +50,4 @@ export class LoginComponent implements OnInit {
 
     }
 
-//   @Input()
-//    userName: string;
-//
-//    @Input()
-//    password: string;
-//
-//  constructor(private router:Router) {
-//
-//  }
-//
-//  public ngOnInit() {
-//
-//
-//  }
-//    loginUser(){
-//        //alert(this.userName + this.password);
-//        this.router.navigate(['Dashboard']);
-//    }
-// }
+}
