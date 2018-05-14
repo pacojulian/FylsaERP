@@ -3,7 +3,7 @@
 db.getCollection('ASSOCIATES').insert({
     ASSOCIATES_ID:"JUAN011",
     NAME:"Juan Carlos ",
-    COMPANY_ID:"C_BARCEL",
+    COMPANY:"C_BARCEL",
   
     })
 
@@ -11,7 +11,7 @@ db.getCollection('ASSOCIATES').insert({
 /*Company*/
 
 db.getCollection('COMPANY').insert({
-    COMPANY_ID:"C_BARCEL",
+    _id:"C_BARCEL",
     NAME:"BARCEL",
     DIRECTION:"IZCALLI CUAUHTEMOC 3",
     RFC:"JUNA96020",
@@ -67,7 +67,9 @@ db.getCollection('INVENTORY').insert({
     _id: "codocondulet",
     DESCRIPTION: "codo condulet",
     PRICE: 200,
+    LABOR_PRICE:42.0,
     UNITY_MEASURE: "PZA"
+	
     })
     
 /*Users*/

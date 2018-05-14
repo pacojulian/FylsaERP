@@ -22,6 +22,7 @@ import { CompanyReadComponent } from './Company/company-read/company-read.compon
 import { CompanyDeleteComponent } from './Company/company-delete/company-delete.component';
 import { CompanyUpdateComponent } from './Company/company-update/company-update.component';
 import {CompanyService} from './Company/company.service';
+import {DashboardService} from './dashboard/dashboard.service';
 import {AssociatesService} from './Associates/associates.service';
 import {ProductsService} from './Productos/products.service';
 import {LoginService} from './login/login.service';
@@ -62,7 +63,8 @@ import{Ng2Webstorage} from 'ngx-webstorage';
       CompanyService,
       AssociatesService,
       ProductsService,
-      LoginService
+      LoginService,
+      DashboardService
   ],
   bootstrap: [AppComponent]
 })
