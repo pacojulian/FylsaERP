@@ -15,7 +15,7 @@ export class SideBarComponent implements OnInit {
       private cookieService: CookieService
   ) { }
   ngOnInit() {
-      //this.sessionName=this.cookieService.get('User');
+      this.sessionName=this.cookieService.get('User');
   }
 
     /*
