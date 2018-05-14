@@ -185,16 +185,12 @@
                                <button type="button" (click)="saveChanges(j)" class="btn btn-default delete-btn"><img [src]="'assets/icons/save.svg'" class="small-image-icon" alt="save image"></button>
                             </div>
                           </div>
-
-
-
-
-
                         </div>
                     </div>
                   </div>
                     <h3> Total en pesos: {{total}}</h3>
                 <button class="btn btn-success btn-lg pull-right contact100-form-btn-submit" type="submit">Cotizar</button>
+                  <!-- <button  type="button" (click)="downloadPDF()">PDF</button> -->
             </div>
         </div>
     </div>
@@ -202,7 +198,7 @@
 </div>
 
 <div class="is-hidden">
-    <div id="HTMLtoPDF">
+    <div id="HTMLtoPDF" [ngStyle]="displayStyle">
       <div class="my-header">
         <div class="header-data">
           FYLSA CONTROL Y AUTOMATIZACION
@@ -213,15 +209,15 @@
       </div>
       <div class="my-body">
       <div class="date-style">
-        21/2/2017
+        {{quotation.DATE}}
         <p>30
       </div>
       <div class="company">
-        <h1 class="my-h1">PATO</h1>
-        <h1 class="my-h1">PATO</h1>
+        <h1 class="my-h1">{{quotation.COMPANY}}</h1>
+        <h1 class="my-h1">{{quotation.ADDRESED}}</h1>
       </div>
       <div class="inicio">
-        ESTIMADO PATO EN ATENCION POR SU AMABLE SOLICITUD ME PERMITO ENTREGAR A USTED LA SIGUIENTE COTIZACION
+        ESTIMADO {{quotation.ADDRESED}} EN ATENCION POR SU AMABLE SOLICITUD ME PERMITO ENTREGAR A USTED LA SIGUIENTE COTIZACION
       </div>
       <h2 class="my-h2">SUMINISTRO DE MATERIAL</h2>
       <div class="container-table100">
@@ -238,56 +234,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
-                    <td class="my-td cell100 column2">PZ</td>
-                    <td class="my-td cell100 column3">2</td>
-                    <td class="my-td cell100 column4">242.11</td>
-                    <td class="my-td cell100 column5">584.22</td>
+                  <tr class="row100 body" *ngFor="let qItem of csList; let j = index">
+                    <td class="my-td cell100 column1">{{qItem.DESCRIPTION}}</td>
+                    <td class="my-td cell100 column2">{{qItem.MEASURE_UNIT}}</td>
+                    <td class="my-td cell100 column3">{{qItem.CANTITY}}</td>
+                    <td class="my-td cell100 column4">{{inventoryQList[j].PRICE}}</td>
+                    <td class="my-td cell100 column5">{{qItem.SALE_PRICE}}</td>
                   </tr>
 
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA REPARACION DE VIDEO PROYECTOR</td>
-                    <td class="my-td cell100 column2">SV</td>
-                    <td class="my-td cell100 column3">1</td>
-                    <td class="my-td cell100 column4">720</td>
-                    <td class="my-td cell100 column5">30720.0</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
-                    <td class="my-td cell100 column2">PZ</td>
-                    <td class="my-td cell100 column3">2</td>
-                    <td class="my-td cell100 column4">242.11</td>
-                    <td class="my-td cell100 column5">584.22</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
-                    <td class="my-td cell100 column2">PZ</td>
-                    <td class="my-td cell100 column3">2</td>
-                    <td class="my-td cell100 column4">242.11</td>
-                    <td class="my-td cell100 column5">584.22</td>
-                  </tr>
-
-                  <tr class="row100 body">
-                    <td class="my-td cell100 column1">Suministro e Instalacion PARA TUBO CONDUIT P/DELG 1-1/2"" (38mm) C/COPLE</td>
-                    <td class="my-td cell100 column2">PZ</td>
-                    <td class="my-td cell100 column3">2</td>
-                    <td class="my-td cell100 column4">242.11</td>
-                    <td class="my-td cell100 column5">584.22</td>
-                  </tr>
                 </tbody>
               </table>
             </div>
         </div>
       </div>
       <div>
-      <h3 class="my-h3">COSTO DEL PROYECTO: 31304.22</h3>
+      <h3 class="my-h3">COSTO DEL PROYECTO (en mxn): {{quotation.COST}}</h3>
       <div class="final">
         <p>LOS PRECIOS SON EN PESOS Y ES MAS 16% DE IVA
-        <p>TIEMPO DE ENTREGA: PATO
-        <p>CONDICIONES DE PAGO: PATO
+        <p>TIEMPO DE ENTREGA: {{quotation.DELIVERY_TIME}}
+        <p>CONDICIONES DE PAGO: {{quotation.PAYMENT_CONDITIONS}}
       </div>
       <div class="final-2">
         CABE ACLARAR QUE ESTA COTIZACION SOLO TIENE VIGENCIA DE 20 DIAS SALUDOS

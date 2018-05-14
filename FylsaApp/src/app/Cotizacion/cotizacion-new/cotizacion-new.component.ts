@@ -24,9 +24,7 @@ export class CotizacionNewComponent implements OnInit {
   total: number;
   now: Date;
   otherInventoryItem: Inventory;
-  /*displayStyle = {
-    'display':'none'
-  };*/
+  displayStyle;
 
   constructor(private cotizacionService: CotizacionService) { }
 
@@ -45,10 +43,21 @@ export class CotizacionNewComponent implements OnInit {
     this.quantity = new Array<number>();
     this.typeService = new Array<string>();
     this.total = 0;
+    this.displayStyle = {
+      'display':'none'
+    };
   }
 
   downloadPDF() {
-    return xepOnline.Formatter.Format('HTMLtoPDF', {render: 'download', pageWidth:'216mm', pageHeight:'279mm'});
+    setTimeout(()=>{
+      return xepOnline.Formatter.Format('HTMLtoPDF', {render: 'download', pageWidth:'216mm', pageHeight:'279mm'});
+    }, 100)
+    console.log("descargado")
+    setTimeout(()=>{
+      this.displayStyle = {
+        'display':'none'
+      };
+    }, 100)
   }
 
   getItems() {
@@ -110,18 +119,17 @@ export class CotizacionNewComponent implements OnInit {
     let yyyy = this.now.getFullYear();
     let fecha = dd + '/' + mm + '/' + yyyy;
 
-    this.quotation.COST = this.total;
-    this.quotation.COTIZACION_SERVICE = this.csList;
-    this.quotation.DATE = fecha;
-    this.quotation._id = yyyy+""+mm+""+dd;
-    this.quotation.USER_ID = 10;
-    this.cotizacionService.newQuotation(this.quotation);
-    /*this.displayStyle = {
-      'display':'block'
-    };*/
-    this.downloadPDF();
-    /*this.displayStyle = {
-      'display':'none'
-    };*/
+    if(this.csList != null) {
+      this.quotation.COST = this.total;
+      this.quotation.COTIZACION_SERVICE = this.csList;
+      this.quotation.DATE = fecha;
+      this.quotation._id = yyyy+""+mm+""+dd;
+      this.quotation.USER_ID = 10;
+      this.cotizacionService.newQuotation(this.quotation);
+      this.displayStyle = {
+        'display':'block',
+      };
+      this.downloadPDF();
+    }
   }
 }
