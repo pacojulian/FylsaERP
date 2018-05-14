@@ -378,7 +378,6 @@ body{
 }
 #HTMLtoPDF {
   font-family: "Roboto", sans-serif;
-  visibility: collapse;
 }
 
 .my-header {
@@ -425,7 +424,7 @@ body{
   position: absolute;
   right: 0px;
   padding: 10px;
-  margin-right: 70%;
+  margin-right: 42%;
 }
 
 .company {
