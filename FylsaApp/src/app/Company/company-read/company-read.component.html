@@ -8,12 +8,7 @@
 					<input [(ngModel)]= "company._id" class="form-control input100" type="text" formControlName="inputId" required>
 					<span class="focus-input100"></span>
 					<!-- error block -->
-					<div *ngIf="idCtrl.invalid && (idCtrl.dirty || idCtrl.touched)"
-							 class="alert alert-danger">
-						<div *ngIf="idCtrl.errors.required">
-							El Id es obligatorio
-						</div>
-					</div>
+					
 				</div>
 				<div class="container-contact100-form-btn">
 					<button type="submit" class="contact100-form-btn">Buscar</button>

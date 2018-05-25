@@ -4,7 +4,10 @@ import {CotizacionService} from '../cotizacion.service';
 import {Inventory} from '../../Models/inventory';
 import {Quotation} from '../../Models/quotation';
 import {Cotizacion_Service} from '../../Models/cotizacion-service';
-
+import {CompanyService} from '../../Company/company.service';
+import {AssociatesService} from '../../Associates/associates.service';
+import {Company} from '../../Models/company';
+import {Associates} from '../../Models/associates';
 
 @Component({
   selector: 'app-cotizacion-new',
@@ -13,6 +16,8 @@ import {Cotizacion_Service} from '../../Models/cotizacion-service';
 })
 export class CotizacionNewComponent implements OnInit {
 
+  companies: Company[];
+  associates: Associates[];
   inventoryList: Inventory[];
   inventoryQList: Inventory[];
   quotation: Quotation;
@@ -27,7 +32,7 @@ export class CotizacionNewComponent implements OnInit {
   otherInventoryItem: Inventory;
   displayStyle;
 
-  constructor(private cotizacionService: CotizacionService) { }
+  constructor(private cotizacionService: CotizacionService, private companyService:CompanyService, private associatesService:AssociatesService) { }
 
   ngOnInit() {
     $(document).ready(function () {
@@ -80,7 +85,10 @@ export class CotizacionNewComponent implements OnInit {
           });
         });
     });
-
+    this.companyService.findAllCompanies().subscribe((res: any) =>{
+        this.companies = res;
+    });
+    this.associates = new Array<Associates>();
     this.inventoryList = new Array<Inventory>();
     this.inventoryQList = new Array<Inventory>();
     this.csList = new Array<Cotizacion_Service>();
@@ -96,6 +104,12 @@ export class CotizacionNewComponent implements OnInit {
       'display':'none'
     };
     //this.quotation._id = "Luis Miguel";
+  }
+
+  changeAddressed(val:any) {
+    this.associatesService.findAssociate(val).subscribe((res: any) =>{
+        this.associates = res;
+    });
   }
 
   downloadPDF() {
@@ -120,13 +134,13 @@ export class CotizacionNewComponent implements OnInit {
 
   addToQuotation(i){
     this.itemIndex = this.itemIndex + 1;
-    let cot = new Cotizacion_Service(this.itemIndex,this.inventoryList[i].DESCRIPTION,this.typeService[0],1,this.inventoryList[i].UNITY_MESURE,0);
+    let cot = new Cotizacion_Service(this.itemIndex,this.inventoryList[i].DESCRIPTION,"",1,this.inventoryList[i].UNITY_MESURE,0);
     this.typeSelected.push(1);
     this.csList.push(cot);
     this.inventoryQList.push(this.inventoryList[i]);
-    for(let other of this.csList) {
-       console.log(other.ITEM + " " + other.DESCRIPTION + " " + other.PROVIDE + " " + other.CANTITY + " " + other.MEASURE_UNIT + " " + other.SALE_PRICE)
-     }
+    // for(let other of this.csList) {
+    //    console.log(other.ITEM + " " + other.DESCRIPTION + " " + other.PROVIDE + " " + other.CANTITY + " " + other.MEASURE_UNIT + " " + other.SALE_PRICE)
+    //  }
     //this.refreshList();
   }
 
@@ -240,17 +254,20 @@ export class CotizacionNewComponent implements OnInit {
     let yyyy = this.now.getFullYear();
     let fecha = dd + '/' + mm + '/' + yyyy;
 
+    let searchQId = this.cotizacionService.findQuotation(this.quotation._id);
+    console.log("search " + JSON.stringify(searchQId));
+
     if(this.csList.length > 0) {
       this.quotation.COST = this.total;
       this.quotation.COTIZACION_SERVICE = this.csList;
       this.quotation.DATE = fecha;
       //this.quotation._id = yyyy+""+mm+""+dd;
       this.quotation.USER_ID = 10;
-      this.cotizacionService.newQuotation(this.quotation);
+      //this.cotizacionService.newQuotation(this.quotation);
       this.displayStyle = {
         'display':'block',
       };
-      this.downloadPDF();
+      //this.downloadPDF();
     }
   }
 }
