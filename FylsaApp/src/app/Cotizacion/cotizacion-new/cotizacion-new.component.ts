@@ -21,6 +21,7 @@ export class CotizacionNewComponent implements OnInit {
   itemIndex: number;
   quantity: number[];
   typeService: string[];
+  typeSelected: number[];
   total: number;
   now: Date;
   otherInventoryItem: Inventory;
@@ -29,10 +30,57 @@ export class CotizacionNewComponent implements OnInit {
   constructor(private cotizacionService: CotizacionService) { }
 
   ngOnInit() {
-   /* $(document).ready(function () {
+    $(document).ready(function () {
 
+        var navListItems = $('div.setup-panel div a'),
+                allWells = $('.setup-content'),
+                allNextBtn = $('.nextBtn');
 
-    });*/
+        allWells.hide();
+
+        navListItems.click(function (e) {
+            e.preventDefault();
+            var $target = $($(this).attr('href')),
+                    $item = $(this);
+
+            if (!$item.hasClass('disabled')) {
+                navListItems.removeClass('btn-primary').addClass('btn-default');
+                $item.addClass('btn-primary');
+                allWells.hide();
+                $target.show();
+                $target.find('input:eq(0)').focus();
+            }
+        });
+
+        allNextBtn.click(function(){
+            var curStep = $(this).closest(".setup-content"),
+                curStepBtn = curStep.attr("id"),
+                nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                curInputs = curStep.find("input[type='text'],input[type='url']"),
+                isValid = true;
+
+            $(".form-group").removeClass("has-error");
+            for(var i=0; i<curInputs.length; i++){
+                if (!curInputs[i].validity.valid){
+                    isValid = false;
+                    $(curInputs[i]).closest(".form-group").addClass("has-error");
+                }
+            }
+
+            if (isValid)
+                nextStepWizard.removeAttr('disabled').trigger('click');
+        });
+
+        $('div.setup-panel div a.btn-primary').trigger('click');
+
+        $("#mySearch").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#resultsTable #myTr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+    });
+
     this.inventoryList = new Array<Inventory>();
     this.inventoryQList = new Array<Inventory>();
     this.csList = new Array<Cotizacion_Service>();
@@ -41,11 +89,13 @@ export class CotizacionNewComponent implements OnInit {
     this.searchBy = "";
     this.itemIndex = 0;
     this.quantity = new Array<number>();
-    this.typeService = new Array<string>();
+    this.typeService = ["Suministro", "Instalacion", "Suministro e Instalacion"];
+    this.typeSelected = new Array<number>();
     this.total = 0;
     this.displayStyle = {
       'display':'none'
     };
+    //this.quotation._id = "Luis Miguel";
   }
 
   downloadPDF() {
@@ -70,39 +120,109 @@ export class CotizacionNewComponent implements OnInit {
 
   addToQuotation(i){
     this.itemIndex = this.itemIndex + 1;
-    let cot = new Cotizacion_Service(this.itemIndex,this.inventoryList[i].DESCRIPTION,"",1,this.inventoryList[i].UNITY_MESURE,0);
+    let cot = new Cotizacion_Service(this.itemIndex,this.inventoryList[i].DESCRIPTION,this.typeService[0],1,this.inventoryList[i].UNITY_MESURE,0);
+    this.typeSelected.push(1);
     this.csList.push(cot);
     this.inventoryQList.push(this.inventoryList[i]);
+    for(let other of this.csList) {
+       console.log(other.ITEM + " " + other.DESCRIPTION + " " + other.PROVIDE + " " + other.CANTITY + " " + other.MEASURE_UNIT + " " + other.SALE_PRICE)
+     }
+    //this.refreshList();
   }
+
+  // refreshList() {
+  //   let otherList = new Array<Cotizacion_Service>();
+  //   for(let element of this.csList) {
+  //     let other = new Cotizacion_Service(element.ITEM,element.DESCRIPTION,element.PROVIDE,element.CANTITY,element.MEASURE_UNIT,element.SALE_PRICE);
+  //     console.log(other.ITEM + " " + other.DESCRIPTION + " " + other.PROVIDE + " " + other.CANTITY + " " + other.MEASURE_UNIT + " " + other.SALE_PRICE)
+  //     otherList.push(other);
+  //   }
+  //   this.csList = new Array<Cotizacion_Service>();
+  //   this.csList = otherList;
+  // }
 
   addToInventoryList() {
       if(this.otherInventoryItem.DESCRIPTION != "" &&
       this.otherInventoryItem.PRICE != 0 &&
       this.otherInventoryItem.LABOR_PRICE != 0 &&
       this.otherInventoryItem.UNITY_MESURE != "") {
-        this.itemIndex = this.itemIndex + 1;
 
-        let cot = new Cotizacion_Service(this.itemIndex,this.otherInventoryItem.DESCRIPTION,"",1,this.otherInventoryItem.UNITY_MESURE,0);
+        this.itemIndex = this.itemIndex + 1;
+        let cot = new Cotizacion_Service(this.itemIndex,this.otherInventoryItem.DESCRIPTION,this.typeService[0],1,this.otherInventoryItem.UNITY_MESURE,0);
         this.csList.push(cot);
         this.inventoryQList.push(this.otherInventoryItem);
       }
   }
 
-  saveChanges(j) {
-      this.csList[j].CANTITY = this.quantity[j];
-      this.csList[j].PROVIDE = this.typeService[j];
-      console.log(this.quantity[j])
-      if(this.typeService[j] == 'Suministro' || this.csList[j].PROVIDE == 'Suministro') {
-          this.csList[j].SALE_PRICE = this.inventoryQList[j].PRICE * this.quantity[j];
-      }
-      if(this.typeService[j] == 'Instalacion' || this.csList[j].PROVIDE == 'Instalacion') {
-          this.csList[j].SALE_PRICE = this.inventoryQList[j].LABOR_PRICE * this.quantity[j];
-      }
-      if(this.typeService[j] == 'Suministro e Instalacion' || this.csList[j].PROVIDE == 'Suministro e Instalacion') {
-        this.csList[j].SALE_PRICE = (this.inventoryQList[j].PRICE * this.quantity[j]) + (this.inventoryQList[j].LABOR_PRICE * this.quantity[j]);
-      }
-       this.csList[j].SALE_PRICE = parseFloat(this.csList[j].SALE_PRICE.toFixed(4));
-      this.calculateTotal();
+  changeQuantity(val:any, j) {
+    //console.log(val)
+    if(val >= 1) {
+      this.csList[j].CANTITY = val;
+      //console.log(this.csList[j].CANTITY)
+      this.calculateSubtotal(j);
+    }
+  }
+
+  changeService(val:any, j) {
+    //console.log(val)
+    if(val != '') {
+      this.csList[j].PROVIDE = val;
+      //console.log(this.csList[j].PROVIDE)
+      this.calculateSubtotal(j);
+    }
+  }
+
+  calculateSubtotal(j) {
+    if(this.csList[j].PROVIDE == 'Suministro') {
+        this.csList[j].SALE_PRICE = this.inventoryQList[j].PRICE * this.csList[j].CANTITY;
+    }
+    if(this.csList[j].PROVIDE == 'Instalacion') {
+        this.csList[j].SALE_PRICE = this.inventoryQList[j].LABOR_PRICE * this.csList[j].CANTITY;
+    }
+    if(this.csList[j].PROVIDE == 'Suministro e Instalacion') {
+      this.csList[j].SALE_PRICE = (this.inventoryQList[j].PRICE * this.csList[j].CANTITY) + (this.inventoryQList[j].LABOR_PRICE * this.csList[j].CANTITY);
+    }
+    this.csList[j].SALE_PRICE = parseFloat(this.csList[j].SALE_PRICE.toFixed(4));
+
+    //this.csList[j] = new Cotizacion_Service(this.csList[j].ITEM,this.csList[j].DESCRIPTION,this.csList[j].PROVIDE,this.csList[j].CANTITY,this.csList[j].MEASURE_UNIT,this.csList[j].SALE_PRICE);
+    this.calculateTotal();
+  }
+
+  // saveChanges(j) {
+  //   if(this.csList[j].CANTITY >= 1) {
+  //     //this.csList[j].CANTITY = this.quantity[j];
+  //     //this.csList[j].PROVIDE = this.typeService[j];
+  //     //console.log(this.quantity[j])
+  //     if(this.csList[j].PROVIDE == 'Suministro') {
+  //         this.csList[j].SALE_PRICE = this.inventoryQList[j].PRICE * this.csList[j].CANTITY;
+  //     }
+  //     if(this.csList[j].PROVIDE == 'Instalacion') {
+  //         this.csList[j].SALE_PRICE = this.inventoryQList[j].LABOR_PRICE * this.csList[j].CANTITY;
+  //     }
+  //     if(this.csList[j].PROVIDE == 'Suministro e Instalacion') {
+  //       this.csList[j].SALE_PRICE = (this.inventoryQList[j].PRICE * this.csList[j].CANTITY) + (this.inventoryQList[j].LABOR_PRICE * this.csList[j].CANTITY);
+  //     }
+  //      this.csList[j].SALE_PRICE = parseFloat(this.csList[j].SALE_PRICE.toFixed(4));
+  //     this.calculateTotal();
+  //   } else {
+  //     alert("No se puede guardar, algún campo en la fila está vacío");
+  //   }
+  // }
+
+  deleteRow(j) {
+    this.csList.splice(j,1);
+    this.inventoryQList.splice(j,1);
+    //refresh all item indexes
+    this.calculateTotal();
+  }
+
+  refreshItemIndexes() {
+    let index = 1;
+    for(let element of this.csList) {
+      element.ITEM = index;
+      index = index + 1;
+    }
+    this.itemIndex = index - 1;
   }
 
   calculateTotal() {
@@ -110,6 +230,7 @@ export class CotizacionNewComponent implements OnInit {
     for (let quoteItem of this.csList) {
       this.total = this.total + quoteItem.SALE_PRICE;
     }
+    this.total = parseFloat(this.total.toFixed(4));
   }
 
   createQuotation() {
@@ -119,11 +240,11 @@ export class CotizacionNewComponent implements OnInit {
     let yyyy = this.now.getFullYear();
     let fecha = dd + '/' + mm + '/' + yyyy;
 
-    if(this.csList != null) {
+    if(this.csList.length > 0) {
       this.quotation.COST = this.total;
       this.quotation.COTIZACION_SERVICE = this.csList;
       this.quotation.DATE = fecha;
-      this.quotation._id = yyyy+""+mm+""+dd;
+      //this.quotation._id = yyyy+""+mm+""+dd;
       this.quotation.USER_ID = 10;
       this.cotizacionService.newQuotation(this.quotation);
       this.displayStyle = {
