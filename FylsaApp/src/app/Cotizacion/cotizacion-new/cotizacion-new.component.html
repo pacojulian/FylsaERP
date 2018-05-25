@@ -75,8 +75,10 @@
                 <h3> Paso 3</h3>
                 <div class="form-group search-container">
                   <input type="text" class="form-control search-bar" [(ngModel)]="searchBy" name="search" id="mySearch"  placeholder="Buscar">
+
                   <button type="button" (click)="getItems()" class="btn btn-default search-btn"><img [src]="'assets/icons/search.svg'" class="small-image-icon" alt="buscar image">Buscar</button>
                 </div>
+                  <h3>Servicios</h3>
                 <div class="container-table100">
                   <div class="wrap-table100 the-overflow">
                       <div class="table" id="resultsTable">
@@ -102,6 +104,8 @@
                 </div>
                   <!-- <button class="btn btn-default prev-btn" disabled="true">Anterior página</button>   <button class="btn btn-default next-btn">Siguiente página</button> -->
                   <!--TABLA PARA AÑADIR OTRO ITEM-->
+                   <h3> Añadir otro tipo de servicio</h3>
+
                   <div class="container-table100">
                     <div class="wrap-table100">
                         <div class="table">
@@ -144,6 +148,7 @@
                     </div>
                   </div>
                 <!-- TABLA COTIZATION -->
+                  <h3> Productos a cotizar</h3>
                   <div class="container-table100">
                     <div class="wrap-table100  the-overflow">
                         <div class="table">

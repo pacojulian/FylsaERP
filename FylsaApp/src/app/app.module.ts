@@ -25,6 +25,7 @@ import {CompanyService} from './Company/company.service';
 import {CotizacionService} from './Cotizacion/cotizacion.service';
 import {AssociatesService} from './Associates/associates.service';
 import {ProductsService} from './Productos/products.service';
+import { DashboardService } from './dashboard/dashboard.service';
 import {LoginService} from './login/login.service';
 import { CookieService } from 'ngx-cookie-service';
 import{Ng2Webstorage} from 'ngx-webstorage';
@@ -64,7 +65,8 @@ import{Ng2Webstorage} from 'ngx-webstorage';
       CotizacionService,
       AssociatesService,
       ProductsService,
-      LoginService
+      LoginService,
+      DashboardService
   ],
   bootstrap: [AppComponent]
 })

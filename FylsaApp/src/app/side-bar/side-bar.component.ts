@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{Router} from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
+import{DashboardService} from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,57 +9,114 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SideBarComponent implements OnInit {
     sessionName:string;
+    sessionAdmin:number;
 
   constructor(
       private router:Router,
-      private cookieService: CookieService
+        private dashService:DashboardService   
   ) { }
   ngOnInit() {
-      this.sessionName=this.cookieService.get('User');
+      
+    
+      this.dashService.getCookies();
+      this.sessionAdmin= this.dashService.getAdminCookie();
+       this.sessionName= this.dashService.getUserCookie();
+     
   }
 
     /*
     * Company View
     */
     viewNewCompanyNew(){
-
-        this.router.navigate(['Dashboard/Company/new']);
+        if(this.sessionAdmin==1){   
+             this.router.navigate(['Dashboard/Company/new']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+       
     }
-      viewNewCompanyAll(){
-
-        this.router.navigate(['Dashboard/Company/all']);
+      viewNewCompanyAll(){ 
+           if(this.sessionAdmin==1){          
+            this.router.navigate(['Dashboard/Company/all']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+        
     }
       viewNewCompanyUpdate(){
-
-        this.router.navigate(['Dashboard/Company/update']);
+            if(this.sessionAdmin==1){
+            this.router.navigate(['Dashboard/Company/update']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+       
     }
       viewNewCompanyDelete(){
-
-        this.router.navigate(['Dashboard/Company/delete']);
+            if(this.sessionAdmin==1){    
+           this.router.navigate(['Dashboard/Company/delete']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+       
     }
     /*
     * Products View
     */
      viewProductsImport(){
-        this.router.navigate(['Dashboard/Products/Import']);
+                 if(this.sessionAdmin==1){    
+           this.router.navigate(['Dashboard/Products/Import']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+       
+       
     }
     /*
     Asociados View
     */
       viewAssociatesNew(){
-        this.router.navigate(['Dashboard/Associates/New']);
+                  if(this.sessionAdmin==1){    
+          this.router.navigate(['Dashboard/Associates/New']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+       
+       
     }
       viewAssociatesRead(){
-
+                if(this.sessionAdmin==1){    
         this.router.navigate(['Dashboard/Associates/Read']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+       
+        
     }
       viewAssociatesUpdate(){
-
-        this.router.navigate(['Dashboard/Associates/Update']);
+         if(this.sessionAdmin==1){    
+             this.router.navigate(['Dashboard/Associates/Update']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+      
     }
        viewAssociatesRemove(){
-
-        this.router.navigate(['Dashboard/Associates/Remove']);
+      if(this.sessionAdmin==1){    
+              this.router.navigate(['Dashboard/Associates/Remove']);
+        }else
+            {
+                alert("No tienes Los permisos para acceder a este modulo, Contacta al administrador");
+            }
+      
+       
     }
     /*
     * Cotizacion View
@@ -69,5 +126,7 @@ export class SideBarComponent implements OnInit {
 
         this.router.navigate(['Dashboard/Cotizacion/new']);
     }
+    
+   
 
 }
