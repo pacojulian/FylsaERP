@@ -42,6 +42,7 @@ export class CotizacionNewComponent implements OnInit {
                 allNextBtn = $('.nextBtn');
 
         allWells.hide();
+        
 
         navListItems.click(function (e) {
             e.preventDefault();
@@ -107,9 +108,9 @@ export class CotizacionNewComponent implements OnInit {
   }
 
   changeAddressed(val:any) {
-    this.associatesService.findAssociate(val).subscribe((res: any) =>{
-        this.associates = res;
-    });
+    //this.associatesService.findAssociate(val).subscribe((res: any) =>{
+//this.associates = res;
+    //});
   }
 
   downloadPDF() {
@@ -254,8 +255,10 @@ export class CotizacionNewComponent implements OnInit {
     let yyyy = this.now.getFullYear();
     let fecha = dd + '/' + mm + '/' + yyyy;
 
-    let searchQId = this.cotizacionService.findQuotation(this.quotation._id);
-    console.log("search " + JSON.stringify(searchQId));
+    let searchQId = this.cotizacionService.findQuotation(this.quotation._id).subscribe((res: any) =>{
+           console.log(res);
+         });
+    //console.log("search " + searchQId);
 
     if(this.csList.length > 0) {
       this.quotation.COST = this.total;

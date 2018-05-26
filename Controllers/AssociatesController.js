@@ -65,7 +65,23 @@ router.get('/findAll',function(req,res){
      })
    
 });
-
+router.get('/findByCompany',function(req,res){
+        
+    var company = req.query.company;
+      associatesSchema.find({COMPANY:company})
+    .select('-_id')
+    .then(companies  => {           
+              res.json(companies);           
+              console.log(companies); 
+         
+         
+        })
+          .catch(error => {
+         res.json({error:"Error"});
+         
+     })
+   
+});
 
 
 router.post('/update',function(req,res){

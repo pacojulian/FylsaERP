@@ -24,6 +24,7 @@ export class CotizacionService {
   }
 
   findQuotation(id) {
+      console.log(id);
     let url = `${this.apiRoot}/cotizacion/findOne?id=`+id;
     return this.http.get(url);
   }
