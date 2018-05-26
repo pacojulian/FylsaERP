@@ -193,7 +193,7 @@
                                   <!-- <option value="" selected disabled hidden>{{qItem.PROVIDE}}</option> -->
                                   <option *ngFor="let type of typeService" [value]="type" [selected]="qItem.PROVIDE==type">{{type}}</option>
                               </select>
-                              selected value is {{qItem.PROVIDE}}
+
                             </div>
                             <div class="cell">
                               {{qItem.SALE_PRICE}}
@@ -275,10 +275,12 @@
         <p>CONDICIONES DE PAGO: {{quotation.PAYMENT_CONDITIONS}}
       </div>
       <div class="final-2">
-        CABE ACLARAR QUE ESTA COTIZACION SOLO TIENE VIGENCIA DE 20 DIAS SALUDOS
-        CORDIALES, PARA CUALQUIER DUDA O ACLARACION, QUEDO DE USTED
+        CABE ACLARAR QUE ESTA COTIZACION SOLO TIENE VIGENCIA DE 20 DIAS. SALUDOS
+        CORDIALES, PARA CUALQUIER DUDA O ACLARACION, QUEDO DE USTED.
       </div>
+
       <div class="firma">
+          <p><p><p><p>
         <p>ATENTAMENTE
         <p>--------------------------------
         <p>DIANA RUIZ

@@ -402,6 +402,7 @@ body{
 }
 .my-h1 {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .my-h2, .my-h3, .firma {

@@ -285,7 +285,7 @@ export class CotizacionNewComponent implements OnInit {
       this.quotation.DATE = fecha;
       //this.quotation._id = yyyy+""+mm+""+dd;
       this.quotation.USER_ID = 10;
-      this.cotizacionService.newQuotation(this.quotation);
+      //this.cotizacionService.newQuotation(this.quotation);
       this.displayStyle = {
         'display':'block',
       };
