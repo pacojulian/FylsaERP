@@ -7,13 +7,6 @@
 					<span class="label-input100">Id del Asociado</span>
 					<input  [(ngModel)]= "associates._id" class="form-control input100" type="text" name="name" value="{{associates._id}}" formControlName="inputId" required>
 					<span class="focus-input100"></span>
-					<!-- error block -->
-					<div *ngIf="idCtrl.invalid && (idCtrl.dirty || idCtrl.touched)"
-							 class="alert alert-danger">
-						<div *ngIf="idCtrl.errors.required">
-							El Id es obligatorio
-						</div>
-					</div>
 				</div>
         <div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">Nombre</span>

@@ -119,8 +119,8 @@ export class CotizacionNewComponent implements OnInit {
   }
 
   changeAddressed(val:any) {
-    let companyId = this.searchCompanyId(val);
-    this.associatesService.findAssociatesByCompany(companyId).subscribe((res: any) =>{
+    //let companyId = this.searchCompanyId(val);
+    this.associatesService.findAssociatesByCompany(val).subscribe((res: any) =>{
         this.associates = res;
     });
   }
