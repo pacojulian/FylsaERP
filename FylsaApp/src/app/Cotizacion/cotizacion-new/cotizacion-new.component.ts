@@ -30,6 +30,7 @@ export class CotizacionNewComponent implements OnInit {
   total: number;
   now: Date;
   otherInventoryItem: Inventory;
+  searchQId: Quotation;
   displayStyle;
 
   constructor(private cotizacionService: CotizacionService, private companyService:CompanyService, private associatesService:AssociatesService) { }
@@ -106,8 +107,20 @@ export class CotizacionNewComponent implements OnInit {
     //this.quotation._id = "Luis Miguel";
   }
 
+  searchCompanyId(name) {
+    let companyId;
+    for(let company of this.companies) {
+      if(company.NAME == name) {
+        companyId = company._id;
+        console.log(companyId);
+      }
+    }
+    return companyId;
+  }
+
   changeAddressed(val:any) {
-    this.associatesService.findAssociate(val).subscribe((res: any) =>{
+    let companyId = this.searchCompanyId(val);
+    this.associatesService.findAssociatesByCompany(companyId).subscribe((res: any) =>{
         this.associates = res;
     });
   }
@@ -247,6 +260,12 @@ export class CotizacionNewComponent implements OnInit {
     this.total = parseFloat(this.total.toFixed(4));
   }
 
+  findQuotation() {
+    this.cotizacionService.findQuotation(this.quotation._id).subscribe((res: any) =>{
+        this.searchQId = res;
+    });
+  }
+
   createQuotation() {
     this.now = new Date();
     let dd = ("0" + this.now.getDate()).slice(-2)
@@ -254,20 +273,27 @@ export class CotizacionNewComponent implements OnInit {
     let yyyy = this.now.getFullYear();
     let fecha = dd + '/' + mm + '/' + yyyy;
 
-    let searchQId = this.cotizacionService.findQuotation(this.quotation._id);
-    console.log("search " + JSON.stringify(searchQId));
+    if(this.quotation._id != "") {
+      this.findQuotation();
+    } else {
+      this.searchQId = null;
+    }
 
-    if(this.csList.length > 0) {
+    if(this.csList.length > 0 && this.quotation.ADDRESED != "" && this.searchQId == null) {
       this.quotation.COST = this.total;
       this.quotation.COTIZACION_SERVICE = this.csList;
       this.quotation.DATE = fecha;
       //this.quotation._id = yyyy+""+mm+""+dd;
       this.quotation.USER_ID = 10;
-      //this.cotizacionService.newQuotation(this.quotation);
+      this.cotizacionService.newQuotation(this.quotation);
       this.displayStyle = {
         'display':'block',
       };
-      //this.downloadPDF();
+      this.downloadPDF();
+    } else {
+      if(this.csList.length < 0) alert("Necesitas añadir items a la cotizacion");
+      if(this.quotation.ADDRESED == "") alert("Necesitas elegir para quien va dirigido");
+      if(this.searchQId != null) alert("El id de cotizacion ya existe");
     }
   }
 }
