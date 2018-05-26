@@ -251,7 +251,7 @@ body{
 
     margin-bottom: 13px;
     content: attr(data-title);
-    min-width: 98px;
+    min-width: 80px;
     display: block;
   }
 
@@ -306,16 +306,16 @@ body{
 }
 
 .table-row .cell:nth-child(1) {
-  width: 310px;
-  padding-left: 40px;
+  width: 300px;
+  padding-left: 20px;
 }
 
 .table-row .cell:nth-child(2) {
-  width: 120px;
+  width: 100px;
 }
 
 .table-row .cell:nth-child(3) {
-  width: 180px;
+  width: 55px;
 }
 
 .table-row .cell:nth-child(4) {
@@ -326,7 +326,7 @@ body{
   width: 90px;
 }
 
-.table-row .cell:nth-child(6) {
+.table-row .cell:nth-child(6),.table-row .cell:nth-child(7)  {
   width: 50px;
 }
 
@@ -398,15 +398,6 @@ body{
 
 .my-h2, .my-h3, .firma {
   text-align: center;
-}
-
-.image-logo {
-  background-image: url(../../images/fylsa.jpg);
-  width: 150px;
-  height: 150px;
-  display: inline-block;
-  margin-top: 10px;
-  margin-left: 25px;
 }
 
 .header-data {

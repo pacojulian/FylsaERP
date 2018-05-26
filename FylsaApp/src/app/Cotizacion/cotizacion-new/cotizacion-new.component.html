@@ -25,12 +25,26 @@
             <div class="col-md-12">
                 <h3> Paso 1</h3>
                 <div class="form-group">
+                    <label class="control-label form-label">Id de la Cotización *</label>
+                    <input  maxlength="20" [(ngModel)]="quotation._id" name="id"  type="text" required="required" class="form-control form-input" placeholder="Id de la Cotización"  />
+                </div>
+                <!-- <div class="form-group">
                     <label class="control-label form-label">Nombre de la Empresa *</label>
-                    <input  maxlength="100" [(ngModel)]= "quotation.COMPANY" name="id" type="text" required="required" class="form-control form-input" placeholder="Nombre de la Empresa"  />
+                    <input  maxlength="50" [(ngModel)]= "quotation.COMPANY" name="company" type="text" required="required" class="form-control form-input" placeholder="Nombre de la Empresa"  />
+                </div> -->
+                 <div class="form-group">
+                  <label class="control-label form-label">Nombre de la Empresa *</label>
+                  <select class="form-control" [(ngModel)]= "quotation.COMPANY" (ngModelChange)="changeAddressed($event)" name="empresa" required="required">
+                    <option *ngFor="let company of companies" [value]="company._id">{{company.NAME}}</option>
+                  </select>
                 </div>
                 <div class="form-group">
                     <label class="control-label form-label">A Quien va Dirigido *</label>
-                    <input maxlength="100"  [(ngModel)]= "quotation.ADDRESED" name="addressed" type="text" required="required" class="form-control form-input" placeholder="A Quien Va Dirigido" />
+                    <input maxlength="50"  [(ngModel)]= "quotation.ADDRESED" name="addressed" type="text" required="required" class="form-control form-input" placeholder="A Quien Va Dirigido" />
+                    <!-- <select class="form-control" [(ngModel)]= "quotation.ADDRESED" name="addressed" required="required">
+                      <option value="">---Seleccione primero una empresa---</option>
+                       <option *ngFor="let company of companies" [value]="company._id">{{company.NAME}}</option>
+                    </select> -->
                 </div>
 
                 <p>(*) Obligatorio</p>
@@ -56,7 +70,7 @@
                     <input maxlength="100" [(ngModel)]= "quotation.PAYMENT_CONDITIONS" name="payment" type="text" required="required" class="form-control form-input" placeholder="Condiciones de Pago" />
                 </div>
                 <p>(*) Obligatorio</p>
-                <button class="btn btn-primary nextBtn btn-lg pull-right contact100-form-btn" type="button" >Siguiente</button>
+                <button class="btn btn-primary nextBtn btn-lg pull-right contact100-form-btn" type="button">Siguiente</button>
             </div>
         </div>
     </div>
@@ -65,13 +79,14 @@
             <div class="col-md-12">
                 <h3> Paso 3</h3>
                 <div class="form-group search-container">
-                  <input type="text" class="form-control search-bar" [(ngModel)]="searchBy" name="search"  placeholder="Buscar Servicios">
+                  <input type="text" class="form-control search-bar" [(ngModel)]="searchBy" name="search" id="mySearch"  placeholder="Buscar">
+
                   <button type="button" (click)="getItems()" class="btn btn-default search-btn"><img [src]="'assets/icons/search.svg'" class="small-image-icon" alt="buscar image">Buscar</button>
                 </div>
                   <h3>Servicios</h3>
                 <div class="container-table100">
                   <div class="wrap-table100 the-overflow">
-                      <div class="table">
+                      <div class="table" id="resultsTable">
                         <div class="table-row header">
                           <div class="cell">
                             Descripción
@@ -81,7 +96,7 @@
                           </div>
                         </div>
 
-                        <div class="table-row" (click)="addToQuotation(i)" *ngFor="let item of inventoryList; let i = index" >
+                        <div class="table-row" (click)="addToQuotation(i)" *ngFor="let item of inventoryList; let i = index" id="myTr">
                           <div class="cell">
                             {{item.DESCRIPTION}}
                           </div>
@@ -95,7 +110,7 @@
                   <!-- <button class="btn btn-default prev-btn" disabled="true">Anterior página</button>   <button class="btn btn-default next-btn">Siguiente página</button> -->
                   <!--TABLA PARA AÑADIR OTRO ITEM-->
                    <h3> Añadir otro tipo de servicio</h3>
-                
+
                   <div class="container-table100">
                     <div class="wrap-table100">
                         <div class="table">
@@ -125,10 +140,10 @@
                               <input type="text" [(ngModel)]= "otherInventoryItem.UNITY_MESURE" name="otherUnit" class="form-control unit-input" placeholder="Metros">
                             </div>
                             <div class="cell">
-                              <input type="number" [(ngModel)]= "otherInventoryItem.PRICE" name="otherPrice" class="form-control unit-input" placeholder="30">
+                              <input type="number" min="0" [(ngModel)]= "otherInventoryItem.PRICE" name="otherPrice" class="form-control unit-input" placeholder="30">
                             </div>
                             <div class="cell">
-                              <input type="number" [(ngModel)]= "otherInventoryItem.LABOR_PRICE" name="otherHandPrice" class="form-control unit-input" placeholder="30">
+                              <input type="number" min="0" [(ngModel)]= "otherInventoryItem.LABOR_PRICE" name="otherHandPrice" class="form-control unit-input" placeholder="30">
                             </div>
                             <div class="cell">
                                <button type="button" (click)="addToInventoryList()" class="btn btn-default"><img [src]="'assets/icons/add.svg'" class="small-image-icon change-color-black" alt="anadir image">Añadir</button>
@@ -151,7 +166,7 @@
                               Cantidad
                             </div>
                             <div class="cell">
-                              Unidad de Medida
+                              U/M
                             </div>
                             <div class="cell">
                               Tipo de Servicio
@@ -159,8 +174,11 @@
                             <div class="cell">
                               Subtotal
                             </div>
-                            <div class="cell">
+                            <!-- <div class="cell">
                               Guardar
+                            </div> -->
+                            <div class="cell">
+                              Eliminar
                             </div>
                           </div>
 
@@ -169,24 +187,26 @@
                               {{qItem.DESCRIPTION}}
                             </div>
                             <div class="cell" >
-                              <input type="number" [(ngModel)]="quantity[j]" name="cantidad" class="form-control quantity-input" placeholder="1" value={{qItem.CANTITY}}>
+                              <input type="number" min="0" [(ngModel)]="qItem.CANTITY" (ngModelChange)="changeQuantity($event,j)" name="cantidad" class="form-control quantity-input">
                             </div>
                             <div class="cell">
                               {{qItem.MEASURE_UNIT}}
                             </div>
                             <div class="cell">
-                              <select class="form-control select-type" [(ngModel)]="typeService[j]" name="tipo">
+                              <select class="form-control select-type" [(ngModel)]="qItem.PROVIDE" (ngModelChange)="changeService($event,j)" name="tipo">
                                   <!-- <option value="" selected disabled hidden>{{qItem.PROVIDE}}</option> -->
-                                  <option>Suministro</option>
-                                  <option>Instalacion</option>
-                                  <option>Suministro e Instalacion</option>
-                                </select>
+                                  <option *ngFor="let type of typeService" [value]="type" [selected]="qItem.PROVIDE==type">{{type}}</option>
+                              </select>
+                              selected value is {{qItem.PROVIDE}}
                             </div>
                             <div class="cell">
                               {{qItem.SALE_PRICE}}
                             </div>
-                            <div class="cell">
+                            <!-- <div class="cell">
                                <button type="button" (click)="saveChanges(j)" class="btn btn-default delete-btn"><img [src]="'assets/icons/save.svg'" class="small-image-icon" alt="save image"></button>
+                            </div> -->
+                            <div class="cell">
+                               <button type="button" (click)="deleteRow(j)" class="btn btn-default delete-btn"><img [src]="'assets/icons/delete.svg'" class="small-image-icon change-color-red" alt="delete image"></button>
                             </div>
                           </div>
                         </div>
@@ -217,13 +237,13 @@
         <p>30
       </div>
       <div class="company">
-        <h1 class="my-h1">{{quotation.COMPANY}}</h1>
-        <h1 class="my-h1">{{quotation.ADDRESED}}</h1>
+        <h2 class="my-h1">{{quotation.COMPANY}}</h2>
+        <h2 class="my-h1">{{quotation.ADDRESED}}</h2>
       </div>
       <div class="inicio">
         ESTIMADO {{quotation.ADDRESED}} EN ATENCION POR SU AMABLE SOLICITUD ME PERMITO ENTREGAR A USTED LA SIGUIENTE COTIZACION
       </div>
-      <h2 class="my-h2">SUMINISTRO DE MATERIAL</h2>
+      <h3 class="my-h2">SUMINISTRO DE MATERIAL</h3>
       <div class="container-table100">
           <div class="table100 ver1">
             <div class="table100-firstcol">
@@ -252,7 +272,7 @@
         </div>
       </div>
       <div>
-      <h3 class="my-h3">COSTO DEL PROYECTO (en mxn): {{quotation.COST}}</h3>
+      <h4 class="my-h3">COSTO DEL PROYECTO (en mxn): {{quotation.COST}}</h4>
       <div class="final">
         <p>LOS PRECIOS SON EN PESOS Y ES MAS 16% DE IVA
         <p>TIEMPO DE ENTREGA: {{quotation.DELIVERY_TIME}}

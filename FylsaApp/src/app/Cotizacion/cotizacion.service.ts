@@ -22,4 +22,9 @@ export class CotizacionService {
     let url = `${this.apiRoot}/cotizacion/new`;
     this.http.post(url,quotation).subscribe((res) => alert(JSON.stringify(res["success"])));
   }
+
+  findQuotation(id) {
+    let url = `${this.apiRoot}/cotizacion/findOne?id=`+id;
+    return this.http.get(url);
+  }
 }
