@@ -22,8 +22,9 @@ export class DashboardService {
     }
     
     deleteCookies(){
-        console.log("entro");
-        this.cookieService.delete('User');
-       this.cookieService.delete( 'Admin');
+        console.log("Delete");
+        this.cookieService.delete('User',' / ');
+       this.cookieService.delete( 'Admin',' / ' );
+        
     }
 }

@@ -28,15 +28,8 @@ export class HeaderComponent implements OnInit {
     */
     
     logOut(){
-        const allCookies: {} = this.cookieService.getAll();
-        console.log(allCookies);
-         
-     if (this.dashService.deleteCookies()){
-         this.router.navigate(['login']);
-     }
-        
+       this.dashService.deleteCookies();
+        this.router.navigate(['login']);
     }
-    prueba(){
-    
-    }
+
 }

@@ -37,15 +37,6 @@ app.use('/company',companyC);
 app.use('/associates',associatesC);
 app.use('/cotizacion',cotizacionC);
 
-app.post('/prueba',function(req,res){
-    
-    console.log(req.body);
-    //res.header("Content-Type", "application/json");
-    res.end("{\"val\":\""+req.body.paco+"\"}");
-    //return req.body;
-    
-    });
-
 /*
 Puerto donde se escucha la Aplicacion
 */

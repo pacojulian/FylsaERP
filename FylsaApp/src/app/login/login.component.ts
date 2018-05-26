@@ -29,19 +29,19 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnInit() {     
-    this.sessionName=this.cookieService.get('User');
+    /*this.sessionName=this.cookieService.get('User');
       console.log(this.sessionName);
       if(this.sessionName){
          
            this.router.navigate(['Dashboard']);
-      }
+      }*/
      
   }
     loginUser(){
         this.user.user = this.userName;
         this.user.password = this.password;
           this.loginService.findOne(this.user).subscribe((res) =>{if(res!=null){ 
-            this.cookieService.set( 'User', res.NAME ),this.cookieService.set('Admin',res.ADMIN_ID.toLocaleString() )
+            this.cookieService.set('User', res.NAME ),this.cookieService.set('Admin',res.ADMIN_ID.toLocaleString() )
               this.router.navigate(['Dashboard']);
           }else{
               alert("Usuario No Encontrado");
