@@ -225,6 +225,14 @@ body{
   pointer-events: none;
 }
 
+.table-row.content:active {
+  background: #5cb85c;
+}
+
+.table-row.content:active .cell {
+    color: white;
+}
+
 @media screen and (max-width: 768px) {
   .table-row {
     display: block;

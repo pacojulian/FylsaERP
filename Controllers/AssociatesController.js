@@ -23,47 +23,67 @@ const associatesSchema = require('../Model/AssociatesSchema');
 Insert Associates
 */
 router.post('/new',function(req,res){
-    
+
 
 
     const associates = new associatesSchema(req.body);
     associates.save(err=>{
      if(err) return res.status(500).send(err);
-        
+
     return res.json({success : "Associates Created successfully."});
-       
+
     });
-   
+
 });
 
 router.get('/find',function(req,res){
-        
+
     var associatesId = req.query.id;
       associatesSchema.findOne({_id:associatesId})
     .select('-_id')
-    .then(associates  => {           
-              res.json(associates);           
-              console.log(associates); 
-         
-         
+    .then(associates  => {
+              res.json(associates);
+              console.log(associates);
+
+
         })
           .catch(error => {
          res.json({error:"Error"});
-         
+
      })
-   
+
 });
-router.get('/findAll',function(req,res){   
+
+router.get('/findByCompany',function(req,res){
+   var company = req.query.company;
+   console.log(company);
+
+     associatesSchema.find({COMPANY:company})
+   .select('-_id')
+   .then(associates  => {
+             res.json(associates);
+             console.log(associates);
+
+
+       })
+         .catch(error => {
+        res.json({error:"Error"});
+
+    })
+
+});
+
+router.get('/findAll',function(req,res){
       associatesSchema.find({})
-    .then(associates  => {           
-              res.json(associates);           
-              console.log(associates);               
+    .then(associates  => {
+              res.json(associates);
+              console.log(associates);
         })
           .catch(error => {
          res.json({error:"Error"});
-         
+
      })
-   
+
 });
 router.get('/findByCompany',function(req,res){
         
@@ -82,7 +102,6 @@ router.get('/findByCompany',function(req,res){
      })
    
 });
-
 
 router.post('/update',function(req,res){
     //console.log(req.body._id);
