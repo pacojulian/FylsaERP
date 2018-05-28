@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
     */
     
     logOut(){
+
        this.dashService.deleteCookies();
         this.router.navigate(['login']);
     }

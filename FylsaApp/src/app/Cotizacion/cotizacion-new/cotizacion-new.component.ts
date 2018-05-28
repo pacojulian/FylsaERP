@@ -73,6 +73,8 @@ export class CotizacionNewComponent implements OnInit {
                     $(curInputs[i]).closest(".form-group").addClass("has-error");
                 }
             }
+            
+            
 
             if (isValid)
                 nextStepWizard.removeAttr('disabled').trigger('click');

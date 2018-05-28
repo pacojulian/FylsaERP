@@ -25,6 +25,7 @@ export class DashboardService {
         console.log("Delete");
         this.cookieService.delete('User',' / ');
        this.cookieService.delete( 'Admin',' / ' );
+         this.cookieService.delete( 'UserID',' / ' );
         
     }
 }
