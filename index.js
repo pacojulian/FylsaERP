@@ -11,6 +11,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://Admin:fylsa@ds237700.mlab.com:37700/fylsa');
 var Schema = mongoose.Schema;
 
+const PORT = process.env.PORT || 8080;
 
 
 const router = express.Router();
@@ -40,6 +41,6 @@ app.use('/cotizacion',cotizacionC);
 /*
 Puerto donde se escucha la Aplicacion
 */
-app.listen(8080,function(){
+app.listen(PORT,function(){
     console.log("listening port 8080");
 })
