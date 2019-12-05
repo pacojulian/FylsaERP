@@ -8,12 +8,13 @@ var request = require('request');
 var querystring = require('querystring');
 var http = require('http');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://Admin:fylsa@ds237700.mlab.com:37700/fylsa');
-var Schema = mongoose.Schema;
+/*mongoose.connect('mongodb://Admin:fylsa@ds237700.mlab.com:37700/fylsa');
+var Schema = mongoose.Schema;*/
 
 const PORT = process.env.PORT || 8080;
 
 
+let url = `${config.urlApis.dns}`;
 const router = express.Router();
 
 const usersC = require('./Controllers/UserController');
@@ -30,7 +31,7 @@ app.use(function(req, res, next) {
     
   next();
 });
-
+app.use(url);
 app.use('/users',usersC);
 app.use('/auth',authenticationC);
 app.use('/products',productsC);

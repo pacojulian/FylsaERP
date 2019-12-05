@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
+var config = require('../Config')
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://Admin:fylsa@ds237700.mlab.com:37700/fylsa');
+mongoose.connect(config.mongoConnection.url, { useNewUrlParser: true });
 var Schema = mongoose.Schema;
 var request = require('request');
 var querystring = require('querystring');
@@ -124,9 +125,5 @@ router.get('/delete',function(req,res){
 )
 
 });
-
-
-
-
 
 module.exports = router;

@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://Admin:fylsa@ds237700.mlab.com:37700/fylsa');
+mongoose.connect('mongodb://Dev:!QAZ2wsx@ds237700.mlab.com:37700/fylsa',{ useNewUrlParser: true });
 var Schema = mongoose.Schema;
 var request = require('request');
 var querystring = require('querystring');

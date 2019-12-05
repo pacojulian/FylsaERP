@@ -22,21 +22,22 @@
   },
   "homepage": "https://github.com/pacojulian/FylsaERP#readme",
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "^1.19.0",
     "client-sessions": "^0.8.0",
     "connect-flash": "^0.1.1",
-    "express": "^4.16.3",
+    "express": "^4.17.1",
     "express-fileupload": "^0.4.0",
     "fast-csv": "^2.4.1",
     "fs": "0.0.1-security",
     "http": "0.0.0",
+    "jsonwebtoken": "^8.5.1",
     "modules": "^0.4.0",
-    "mongoose": "^5.0.15",
+    "mongoose": "^5.6.6",
     "path": "^0.12.7",
     "querystring": "^0.2.0",
     "request": "^2.85.0"
   },
-    "engines": {
+  "engines": {
     "node": "6.10.0"
   }
 }
